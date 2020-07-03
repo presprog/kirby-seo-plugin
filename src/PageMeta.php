@@ -121,25 +121,6 @@ class PageMeta
             return $file;
         }
 
-        if (array_key_exists($key, $this->metadata) === true) {
-            $value = $this->metadata[$key];
-            if (is_callable($value) === true) {
-                $value = $value->call($this->page);
-            }
-
-            if (is_a($value, File::class) === true) {
-                return $value;
-            }
-
-            if (is_a($value, Field::class) === true) {
-                return $value->toFile();
-            }
-
-            if (is_string($value) === true) {
-                return $this->page->file($value);
-            }
-        }
-
         if ($fallback === true) {
             return site()->content()->get($key)->toFile();
         }
