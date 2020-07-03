@@ -1,0 +1,17 @@
+type: section
+icon: search
+fields:
+  metaTitle:
+    label: Seitentitel
+    type: text
+  metaDescription:
+    label: Seitenbeschreibung
+    type: textarea
+    buttons: false
+    help: &pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben.
+  ogImage:
+    label: Open Graph Image
+    type: files
+    files: images
+    multiple: false
+    help: Vorschaubild für Soziale Netzwerke

@@ -1,0 +1,62 @@
+type: group
+fields:
+  companyHeadline:
+    type: headline
+    label: Unternehmen
+  companyHelp:
+    label: Hilfe
+    type: info
+    text: Gib hier Daten über dein Unternehmen ein.
+  companyName:
+    type: text
+    label: Firma
+    required: true
+    width: 1/2
+  companyLegalName:
+    type: text
+    label: Firma mit rechtlichem Zusatz
+    width: 1/2
+  companyAddress:
+    type: textarea
+    label: Adresse
+    required: true
+  companyPostal:
+    type: text
+    label: Postleitzahl
+    required: true
+    width: 1/4
+  companyCity:
+    type: text
+    label: Stadt
+    required: true
+    width: 1/4
+  companyCountry:
+    type: text
+    label: Land
+    required: true
+    width: 1/2
+  companyMail:
+    type: email
+    label: E-Mail
+    width: 1/2
+  companyFon:
+    type: text
+    label: Telefonnr.
+    width: 1/2
+  companySocialMedia:
+    type: structure
+    label: Social Media Profile
+    empty: Noch keine Social Media Profile hinterlegt
+    fields:
+      name:
+        type: text
+        label: Plattform
+        width: 1/2
+        required: true
+        help: z.B. Facebook
+      link:
+        type: text
+        label: Link
+        width: 1/2
+        required: true
+        help: z.B. https://www.facebook.com/my-company

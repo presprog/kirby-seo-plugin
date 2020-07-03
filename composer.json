@@ -1,0 +1,17 @@
+{
+  "name": "presprog/kirby3-meta",
+  "description": "Opinionated meta data plugin for Kirby 3",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "require": {
+    "getkirby/composer-installer": "^1.1"
+  },
+  "autoload": {
+      "psr-4": {
+          "PresProg\\KirbyMeta\\": "src/"
+      }
+  },
+  "extra": {
+    "installer-name": "meta"
+  }
+}
