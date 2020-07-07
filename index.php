@@ -13,9 +13,15 @@ Kirby::plugin('presprog/meta', [
     ],
 
     'options' => [
-        'templatesInclude' => [],
-        'pagesInclude' => [],
-        'pagesExclude' => [],
+        'sitemap.templatesInclude' => [],
+        'sitemap.pagesInclude' => [],
+        'sitemap.pagesExclude' => [],
+    ],
+
+    'pageMethods' => [
+        'meta' => function () {
+            return new PageMeta($this);
+        }
     ],
 
     'routes' => [
@@ -36,11 +42,11 @@ Kirby::plugin('presprog/meta', [
         [
             'pattern' => 'sitemap.xml',
             'action' => function () {
-                $templatesWhitelist = option('kirby.meta.templatesInclude', []);
-                $pagesWhitelist = option('kirby.meta.pagesInclude', []);
-                $pagesBlacklist = option('kirby.meta.pagesExclude', []);
+                $templatesIncludeList = option('presprog.meta.sitemap.templatesInclude', []);
+                $pagesIncludeList = option('presprog.meta.sitemap.pagesInclude', []);
+                $pagesExcludeList = option('presprog.meta.sitemap.pagesExclude', []);
 
-                $blacklistPattern = '!^(?:' . implode('|', $pagesBlacklist) . ')$!i';
+                $excludeListPattern = '!^(?:' . implode('|', $pagesExcludeList) . ')$!i';
 
                 $cache = kirby()->cache('pages');
                 $cacheId = 'sitemap.xml';
@@ -52,11 +58,11 @@ Kirby::plugin('presprog/meta', [
 
                     foreach (site()->index() as $item) {
 
-                        if (in_array($item->intendedTemplate()->name(), $templatesWhitelist) === false && in_array($item->id(), $pagesWhitelist) === false) {
+                        if (in_array($item->intendedTemplate()->name(), $templatesIncludeList) === false && in_array($item->id(), $pagesIncludeList) === false) {
                             continue;
                         }
 
-                        if (preg_match($blacklistPattern, $item->id())) {
+                        if (preg_match($excludeListPattern, $item->id())) {
                             continue;
                         }
 
@@ -81,11 +87,6 @@ Kirby::plugin('presprog/meta', [
                 return new Response($sitemap, 'application/xml');
             }
         ]
-    ],
-
-    'pageMethods' => [
-        'meta' => function () {
-            return new PageMeta($this);
-        }
     ]
+
 ]);
