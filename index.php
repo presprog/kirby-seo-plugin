@@ -36,8 +36,6 @@ Kirby::plugin('presprog/meta', [
         [
             'pattern' => 'sitemap.xml',
             'action' => function () {
-
-                $sitemap = [];
                 $templatesWhitelist = option('kirby.meta.templatesInclude', []);
                 $pagesWhitelist = option('kirby.meta.pagesInclude', []);
                 $pagesBlacklist = option('kirby.meta.pagesExclude', []);
@@ -47,7 +45,7 @@ Kirby::plugin('presprog/meta', [
                 $cache = kirby()->cache('pages');
                 $cacheId = 'sitemap.xml';
 
-                if (!$sitemap = $cache->get($cacheId)) {
+                if (!$sitemap = $cache->get($cacheId, [])) {
 
                     $sitemap[] = '<?xml version="1.0" encoding="UTF-8"?>';
                     $sitemap[] = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
