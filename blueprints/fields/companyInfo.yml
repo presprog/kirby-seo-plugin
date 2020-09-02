@@ -3,6 +3,7 @@ fields:
   companyHeadline:
     type: headline
     label: Unternehmen
+    numbered: false
   companyHelp:
     label: Hilfe
     type: info
@@ -19,7 +20,10 @@ fields:
   companyAddress:
     type: textarea
     label: Adresse
+    buttons: false
+    size: tiny
     required: true
+    help: In der Regel Straße und Hausnummer, ggf. auch Angaben wie c/o, Im Hinterhaus, etc.
   companyPostal:
     type: text
     label: Postleitzahl
@@ -42,6 +46,10 @@ fields:
   companyFon:
     type: text
     label: Telefonnr.
+    width: 1/2
+  companyFax:
+    type: text
+    label: Faxnr.
     width: 1/2
   companySocialMedia:
     type: structure
