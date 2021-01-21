@@ -41,7 +41,7 @@ class PageMeta
 
         // Image
         if ($openGraphImage = $this->getFile('ogImage')) {
-            $opengraph['og:image'] = $openGraphImage->url();
+            $opengraph['og:image'] = $openGraphImage->crop(1200, 630)->url();
 
             if ($openGraphImage->alt()->isNotEmpty()) {
                 $opengraph['og:image:alt'] = $openGraphImage->alt()->value();
