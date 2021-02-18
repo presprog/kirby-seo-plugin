@@ -40,7 +40,8 @@ class PageMeta
         }
 
         // Image
-        if ($openGraphImage = $this->getFile('ogImage')) {
+        $openGraphImage = $this->openGraphImage();
+        if ($openGraphImage) {
             $opengraph['og:image'] = $openGraphImage->crop(1200, 630)->url();
 
             if ($openGraphImage->alt()->isNotEmpty()) {
@@ -109,6 +110,23 @@ class PageMeta
     public function thumbnail(bool $fallback = true): ?File
     {
         return $this->getFile('ogImage', $fallback);
+    }
+
+    public function openGraphImage(): ?File
+    {
+        if (method_exists($this->page, 'getOpenGraphImage')) {
+            return  $this->page->getOpenGraphImage();
+        }
+
+        if ($this->page->ogImage()->isNotEmpty()) {
+            return $this->page->ogImage()->first()->toFile();
+        }
+
+        if (site()->ogImage()->isNotEmpty()) {
+            return site()->ogImage()->first()->toFile();
+        }
+
+        return null;
     }
 
     public function getFile(string $key, bool $fallback = true): ?File
