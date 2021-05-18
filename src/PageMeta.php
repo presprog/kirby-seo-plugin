@@ -42,7 +42,11 @@ class PageMeta
         // Image
         $openGraphImage = $this->openGraphImage();
         if ($openGraphImage) {
-            $opengraph['og:image'] = $openGraphImage->crop(1200, 630)->url();
+            $croppedOgImage = $openGraphImage->crop(1200, 630);
+
+            $opengraph['og:image'] = $croppedOgImage->url();
+            $opengraph['og:image:width'] = $croppedOgImage->width();
+            $opengraph['og:image:height'] = $croppedOgImage->height();
 
             if ($openGraphImage->alt()->isNotEmpty()) {
                 $opengraph['og:image:alt'] = $openGraphImage->alt()->value();
