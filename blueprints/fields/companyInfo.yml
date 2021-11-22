@@ -11,45 +11,54 @@ fields:
   companyName:
     type: text
     label: Firma
+    translate: false
     required: true
     width: 1/2
   companyLegalName:
     type: text
     label: Firma mit rechtlichem Zusatz
+    translate: false
     width: 1/2
   companyAddress:
     type: textarea
     label: Adresse
     buttons: false
     size: tiny
+    translate: false
     required: true
     help: In der Regel Straße und Hausnummer, ggf. auch Angaben wie c/o, Im Hinterhaus, etc.
   companyPostal:
     type: text
     label: Postleitzahl
+    translate: false
     required: true
     width: 1/4
   companyCity:
     type: text
     label: Stadt
     required: true
+    translate: false
     width: 1/4
   companyCountry:
     type: text
     label: Land
+    translate: false
     required: true
     width: 1/2
   companyMail:
     type: email
     label: E-Mail
+    translate: false
     width: 1/2
   companyFon:
     type: text
     label: Telefonnr.
+    translate: false
     width: 1/2
   companyFax:
     type: text
     label: Faxnr.
+    translate: false
     width: 1/2
   companySocialMedia:
     type: structure
