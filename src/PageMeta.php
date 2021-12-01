@@ -53,6 +53,9 @@ class PageMeta
             }
         }
 
+        // Robots
+        $meta['robots'] = $this->page->robots()->isNotEmpty() ? $this->page->robots()->value() : 'index,follow';
+
         // Generate markup
         $html = [];
 
@@ -207,26 +210,4 @@ class PageMeta
 
         return (float)min(1, max(0, $priority));
     }
-
-    public function robots(): string
-    {
-        $html = [];
-
-//        $robots = $this->get('robots');
-//
-//        if ($robots->isNotEmpty()) {
-//            $html[] = Html::tag('meta', null, [
-//                'name' => 'robots',
-//                'content' => $robots->value(),
-//            ]);
-//        }
-
-        $html[] = Html::tag('link', null, [
-            'rel' => 'canonical',
-            'href' => $this->page->url(),
-        ]);
-
-        return implode(PHP_EOL, $html) . PHP_EOL;
-    }
-
 }

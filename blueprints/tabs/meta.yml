@@ -4,6 +4,7 @@ fields:
   metaTitle:
     label: Seitentitel
     type: text
+    width: 1/2
   metaDescription:
     label: Seitenbeschreibung
     type: textarea
@@ -15,3 +16,13 @@ fields:
     files: images
     multiple: false
     help: Vorschaubild für Soziale Netzwerke
+  robots:
+    label: Robots
+    type: select
+    width: 1/2
+    options:
+      - 'index,nofollow'
+      - 'noindex,follow'
+      - 'noindex,nofollow'
+    placeholder: 'index,follow (Standard)'
+    help: Anweisungen für Suchmaschinen-Crawler zur Indexierung der Inhalte
