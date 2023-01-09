@@ -51,7 +51,7 @@ Kirby::plugin('presprog/meta', [
         ], [
             'pattern' => 'sitemap.xml',
             'language' => '*',
-            'action' => function ($language) {
+            'action' => function () {
                 $templatesIncludeList = option('presprog.meta.sitemap.templatesInclude', []);
                 $pagesIncludeList = option('presprog.meta.sitemap.pagesInclude', []);
                 $pagesExcludeList = option('presprog.meta.sitemap.pagesExclude', []);
