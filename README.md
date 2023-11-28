@@ -1,13 +1,13 @@
-# Meta data Plugin for Kirby 3
+# Metadata Plugin for Kirby 4
 
-This plugin started as a copy of the meta data plugin included in the [getkirby.com](https://github.com/getkirby/getkirby.com) GitHub Repository.  We then stripped it down to what we needed and started using it in multiple of our own sites. Hence, kudos to getkirby team for their work and [thanks for sharing](https://github.com/getkirby/getkirby.com/issues/526). 
+This plugin started as a copy of the metadata plugin included in the [getkirby.com](https://github.com/getkirby/getkirby.com) GitHub Repository.  We then stripped it down to what we needed and started using it in multiple of our own sites. Hence, kudos to Kirby team for their work and [thanks for sharing](https://github.com/getkirby/getkirby.com/issues/526). 
 
 ## Setup
 
 Install with composer
 
 ```
-composer require presprog/kirby3-meta
+composer require presprog/kirby-meta
 ```
 
 ## Configuration
@@ -35,7 +35,7 @@ tabs:
   meta: tabs/meta
 ```
 
-Whenever you define meta data like `metatitle`, `metadescription` or `ogimage` on your page, these will be used. When you do not define these, the fallbacks from `site.yml` will be used.
+Whenever you define metadata like `metatitle`, `metadescription` or `ogimage` on your page, these will be used. When you do not define these, the fallbacks from `site.yml` will be used.
 
 ## Use in template
 
