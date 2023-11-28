@@ -1,6 +1,6 @@
 {
-  "name": "presprog/kirby3-meta",
-  "description": "Opinionated meta data plugin for Kirby 3",
+  "name": "presprog/kirby-meta",
+  "description": "Opinionated meta data plugin for Kirby",
   "type": "kirby-plugin",
   "license": "MIT",
   "require": {
