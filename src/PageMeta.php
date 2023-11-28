@@ -2,7 +2,7 @@
 
 namespace PresProg\KirbyMeta;
 
-use Kirby\Cms\Field;
+use Kirby\Content\Field;
 use Kirby\Cms\File;
 use Kirby\Toolkit\Html;
 
