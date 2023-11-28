@@ -67,7 +67,7 @@ class PageMeta
             ]);
         }
 
-        // Generate Opengraph Tags
+        // Generate Open Graph Tags
         foreach ($opengraph as $prop => $content) {
             $html[] = Html::tag('meta', null, [
                 'property' => $prop,
@@ -200,8 +200,6 @@ class PageMeta
 
     public function priority(): float
     {
-//        $priority = $this->get('priority', false)->value();
-
         $priority = null;
 
         if (empty($priority) === true) {

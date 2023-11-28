@@ -10,34 +10,34 @@ use PresProg\KirbyMeta\PageMeta;
 Kirby::plugin('presprog/meta', [
 
     'blueprints' => [
-        'tabs/meta' => __DIR__ . '/blueprints/tabs/meta.yml',
-        'fields/companyInfo' => __DIR__ . '/blueprints/fields/companyInfo.yml'
+        'tabs/meta'          => __DIR__ . '/blueprints/tabs/meta.yml',
+        'fields/companyInfo' => __DIR__ . '/blueprints/fields/companyInfo.yml',
     ],
 
     'options' => [
         'sitemap.templatesInclude' => [],
-        'sitemap.pagesInclude' => [],
-        'sitemap.pagesExclude' => [],
+        'sitemap.pagesInclude'     => [],
+        'sitemap.pagesExclude'     => [],
     ],
 
     'pageMethods' => [
         'meta' => function () {
             return new PageMeta($this);
-        }
+        },
     ],
 
     'routes' => [
         [
             'pattern' => 'robots.txt',
-            'method' => 'ALL',
-            'action' => function () {
+            'method'  => 'ALL',
+            'action'  => function () {
                 $robots = 'User-agent: *' . PHP_EOL;
                 $robots .= 'Allow: /' . PHP_EOL;
 
                 if (kirby()->multilang()) {
                     /** @var Language $language */
                     foreach (kirby()->languages() as $language) {
-                        $robots .=  Url::makeAbsolute('/sitemap.xml', $language->url()) . PHP_EOL;
+                        $robots .= Url::makeAbsolute('/sitemap.xml', $language->url()) . PHP_EOL;
                     }
                 } else {
                     $robots .= 'Sitemap: ' . url('sitemap.xml');
@@ -47,18 +47,18 @@ Kirby::plugin('presprog/meta', [
                     ->response()
                     ->type('text')
                     ->body($robots);
-            }
+            },
         ], [
-            'pattern' => 'sitemap.xml',
+            'pattern'  => 'sitemap.xml',
             'language' => '*',
-            'action' => function () {
+            'action'   => function () {
                 $templatesIncludeList = option('presprog.meta.sitemap.templatesInclude', []);
-                $pagesIncludeList = option('presprog.meta.sitemap.pagesInclude', []);
-                $pagesExcludeList = option('presprog.meta.sitemap.pagesExclude', []);
+                $pagesIncludeList     = option('presprog.meta.sitemap.pagesInclude', []);
+                $pagesExcludeList     = option('presprog.meta.sitemap.pagesExclude', []);
 
                 $excludeListPattern = '!^(?:' . implode('|', $pagesExcludeList) . ')$!i';
 
-                $cache = kirby()->cache('pages');
+                $cache   = kirby()->cache('pages');
                 $cacheId = (kirby()->multilang()) ? 'sitemap.' . kirby()->language()->code() . '.xml' : 'sitemap.xml';
 
                 if (!$sitemap = $cache->get($cacheId, [])) {
@@ -89,14 +89,14 @@ Kirby::plugin('presprog/meta', [
                     }
 
                     $sitemap[] = '</urlset>';
-                    $sitemap = implode(PHP_EOL, $sitemap);
+                    $sitemap   = implode(PHP_EOL, $sitemap);
 
                     $cache->set($cacheId, $sitemap);
                 }
 
                 return new Response($sitemap, 'application/xml');
-            }
-        ]
-    ]
+            },
+        ],
+    ],
 
 ]);
