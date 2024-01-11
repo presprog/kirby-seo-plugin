@@ -1,21 +1,32 @@
 type: section
 icon: search
+title: Meta
 fields:
   metaTitle:
-    label: Seitentitel
+    label:
+      de: Seitentitel
+      en: Page title
     type: text
     width: 1/2
   metaDescription:
-    label: Seitenbeschreibung
+    label:
+      de: Seitenbeschreibung
+      en: Meta description
     type: textarea
     buttons: false
-    help: &pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben.
+    help:
+      de: &pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben.
+      en: As a rule of 👍 not longer than a text message (160 characters). Will be displayed on search engine result pages.
   ogImage:
-    label: Open Graph Image
+    label:
+      de: Open-Graph-Bild
+      en: Open Graph Image
     type: files
     files: images
     multiple: false
-    help: Vorschaubild für Soziale Netzwerke
+    help:
+      de: Vorschaubild für Soziale Netzwerke
+      en: Preview image for social media platforms
   robots:
     label: Robots
     type: select
@@ -25,4 +36,6 @@ fields:
       - 'noindex,follow'
       - 'noindex,nofollow'
     placeholder: 'index,follow (Standard)'
-    help: Anweisungen für Suchmaschinen-Crawler zur Indexierung der Inhalte
+    help:
+      de: Anweisungen für Suchmaschinen-Crawler zur Indexierung deiner Inhalte
+      en: Instructions for search engine crawler on how to index your content
