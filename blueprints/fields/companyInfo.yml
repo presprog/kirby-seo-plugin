@@ -2,72 +2,104 @@ type: group
 fields:
   companyHeadline:
     type: headline
-    label: Unternehmen
+    label:
+      de: Unternehmen
+      en: Company
     numbered: false
   companyHelp:
-    label: Hilfe
+    label:
+      de: Hilfe
+      en: Help
     type: info
-    text: Gib hier Daten über dein Unternehmen ein.
+    text:
+      de: Bitte gib hier die Kontaktdaten deines Unternehmens ein
+      en: Please enter your company details
   companyName:
     type: text
-    label: Firma
+    label:
+      de: Firma
+      en: Company name
     translate: false
     required: true
     width: 1/2
   companyLegalName:
     type: text
-    label: Firma mit rechtlichem Zusatz
+    label:
+      de: Firma mit rechtlichem Zusatz
+      en: Legal company name
     translate: false
     width: 1/2
   companyAddress:
     type: textarea
-    label: Adresse
+    label:
+      de: Adresse
+      en: Address
     buttons: false
     size: tiny
     translate: false
     required: true
-    help: In der Regel Straße und Hausnummer, ggf. auch Angaben wie c/o, Im Hinterhaus, etc.
+    help:
+      de: In der Regel Straße und Hausnummer, ggf. auch Angaben wie c/o, Im Hinterhaus, etc.
+      en: Usually Street and No., but maybe c/o, in back house, etc.
   companyPostal:
     type: text
-    label: Postleitzahl
+    label:
+      de: Postleitzahl
+      en: Postal code
     translate: false
     required: true
     width: 1/4
   companyCity:
     type: text
-    label: Stadt
+    label:
+      de: Stadt
+      en: City
     required: true
     translate: false
     width: 1/4
   companyCountry:
     type: text
-    label: Land
+    label:
+      de: Land
+      en: Country
     translate: false
     required: true
     width: 1/2
   companyMail:
     type: email
-    label: E-Mail
+    label:
+      de: E-Mail
+      en: Email
     translate: false
     width: 1/2
   companyFon:
     type: text
-    label: Telefonnr.
+    label:
+      de: Telefonnr.
+      en: Fon
     translate: false
     width: 1/2
   companyFax:
     type: text
-    label: Faxnr.
+    label:
+      de: Faxnr.
+      en: Fax
     translate: false
     width: 1/2
   companySocialMedia:
     type: structure
-    label: Social Media Profile
-    empty: Noch keine Social Media Profile hinterlegt
+    label:
+      de: Social Media Profile
+      en: Social media profiles
+    empty:
+      de: Füge das erste Social Media Profil hinzu
+      en: Add your first social media profile
     fields:
       name:
         type: text
-        label: Plattform
+        label:
+          de: Plattform
+          en: Platform
         width: 1/2
         required: true
         help: z.B. Facebook
