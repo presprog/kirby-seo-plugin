@@ -1,6 +1,6 @@
 type: section
 icon: search
-title: Meta
+label: SEO
 fields:
   metaTitle:
     label:
