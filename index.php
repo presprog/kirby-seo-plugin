@@ -2,6 +2,8 @@
 
 use Kirby\Cms\App as Kirby;
 use Kirby\Cms\Language;
+use Kirby\Data\Yaml;
+use Kirby\Filesystem\F;
 use Kirby\Http\Response;
 use Kirby\Http\Url;
 use Kirby\Toolkit\Xml;
@@ -102,6 +104,11 @@ Kirby::plugin('presprog/meta', [
                 return new Response($sitemap, 'application/xml');
             },
         ],
+    ],
+
+    'translations' => [
+        'en' => Yaml::decode(F::read(__DIR__ . '/translations/en.yml')),
+        'de' => Yaml::decode(F::read(__DIR__ . '/translations/de.yml')),
     ],
 
 ]);
