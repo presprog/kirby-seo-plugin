@@ -2,7 +2,7 @@
 
 ## Usage
 
-The method `$page->meta()->head()` method does no longer return the HTML markup, but an array of meta and open graph tags. Use the `seo/head` snippet in your templates to render the markup. 
+The method `$page->meta()->head()` does not exist anymore. Use the `seo/head` snippet in your templates to render the markup. 
 
 **In 0.x.x**
 ```php
@@ -17,7 +17,7 @@ The method `$page->meta()->head()` method does no longer return the HTML markup,
 ```
 
 ## Panel
-The tab is now called SEO instead of Meta so it's purpose is more clearly communicated.
+The tab is now called SEO instead of Meta to communicate its purpose more clearly.
 
 ## JSON-KD / Company info
 
