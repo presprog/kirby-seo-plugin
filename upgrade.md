@@ -18,6 +18,7 @@ The method `$page->meta()->head()` does not exist anymore. Use the `seo/head` sn
 
 ## Panel
 The tab is now called SEO instead of Meta to communicate its purpose more clearly.
+The blueprint has been renamed from `meta.yml` to `seo.yml`, too
 
 ## JSON-KD / Company info
 
