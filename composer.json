@@ -9,7 +9,7 @@
   },
   "autoload": {
       "psr-4": {
-          "PresProg\\KirbyMeta\\": "src/"
+          "PresProg\\KirbyMeta\\": "classes/"
       }
   },
   "extra": {
