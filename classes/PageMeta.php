@@ -98,11 +98,6 @@ class PageMeta
         return $metaDescription;
     }
 
-    public function thumbnail(bool $fallback = true): ?File
-    {
-        return $this->getFile('ogImage', $fallback);
-    }
-
     public function openGraphImage(): ?File
     {
         if (method_exists($this->page, 'getOpenGraphImage')) {
@@ -135,11 +130,6 @@ class PageMeta
         }
 
         return null;
-    }
-
-    public function hasOwnThumbnail(): bool
-    {
-        return $this->getFile('ogImage', false) !== null;
     }
 
     public function priority(): float
