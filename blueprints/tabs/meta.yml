@@ -1,34 +1,24 @@
 type: section
 icon: search
-label: SEO
+label: seo-tab-label
 fields:
   metaTitle:
-    label:
-      de: Seitentitel
-      en: Page title
+    label: seo-tab-meta-title
     type: text
     width: 1/2
   metaDescription:
-    label:
-      de: Seitenbeschreibung
-      en: Meta description
+    label: seo-tab-meta-description
     type: textarea
     buttons: false
-    help:
-      de: &pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben.
-      en: As a rule of 👍 not longer than a text message (160 characters). Will be displayed on search engine result pages.
+    help: seo-tab-meta-description-help
   ogImage:
-    label:
-      de: Open-Graph-Bild
-      en: Open Graph Image
+    label: seo-tab-og-image
     type: files
     files: images
     multiple: false
-    help:
-      de: Vorschaubild für Soziale Netzwerke
-      en: Preview image for social media platforms
+    help: seo-tab-og-image-help
   robots:
-    label: Robots
+    label: seo-tab-robots
     type: select
     width: 1/2
     options:
@@ -36,6 +26,4 @@ fields:
       - 'noindex,follow'
       - 'noindex,nofollow'
     placeholder: 'index,follow (Standard)'
-    help:
-      de: Anweisungen für Suchmaschinen-Crawler zur Indexierung deiner Inhalte
-      en: Instructions for search engine crawler on how to index your content
+    help: seo-tab-robots-help

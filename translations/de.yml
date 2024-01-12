@@ -1,0 +1,9 @@
+# Meta tab
+seo-tab-label: SEO
+seo-tab-meta-title: Seitentitel
+seo-tab-meta-description: Seitenbeschreibung
+seo-tab-meta-description-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
+seo-tab-og-image: Open-Graph-Bild
+seo-tab-og-image-help: Vorschaubild für Soziale Netzwerke
+seo-tab-robots: Robots
+seo-tab-robots-help: Anweisungen für Suchmaschinen-Crawler zur Indexierung deiner Inhalte
