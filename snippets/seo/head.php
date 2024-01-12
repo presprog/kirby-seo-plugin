@@ -9,6 +9,11 @@ use Kirby\Cms\Html;
 use Kirby\Cms\Page;
 use Kirby\Cms\Site;
 
+?>
+
+<title><?= $page->meta()->title()->html() ?></title>
+
+<?php
 ['meta' => $meta, 'opengraph' => $opengraph] = $page->meta()->head();
 
 // Generate Meta Tags

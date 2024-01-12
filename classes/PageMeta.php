@@ -2,6 +2,7 @@
 
 namespace PresProg\KirbyMeta;
 
+use Kirby\Cms\Page;
 use Kirby\Content\Field;
 use Kirby\Cms\File;
 use Kirby\Toolkit\Html;
@@ -11,11 +12,8 @@ use Kirby\Toolkit\Html;
  */
 class PageMeta
 {
-    protected $page;
-
-    public function __construct($page)
+    public function __construct(private Page $page, private PageMetaOptions $options)
     {
-        $this->page = $page;
     }
 
     public function head(): array
@@ -69,7 +67,16 @@ class PageMeta
     public function title(): Field
     {
         $metaTitle = $this->page->metatitle();
-        return !$metaTitle->isEmpty() ? $metaTitle : $this->page->title();
+
+        if ($metaTitle->isEmpty()) {
+            $metaTitle = $this->page->title();
+        }
+
+        if ($this->options->appendSiteTitle) {
+            return new Field($this->page, '_metaTitle', $metaTitle . $this->options->titleSeparator . $this->page->site()->title());
+        }
+
+        return $metaTitle;
     }
 
     /**
@@ -141,5 +148,14 @@ class PageMeta
         }
 
         return (float)min(1, max(0, $priority));
+    }
+
+    public static function for(Page $page, PageMetaOptions $options = null): self
+    {
+        if (!$options) {
+            $options = PageMetaOptions::fromOptions();
+        }
+
+        return new PageMeta($page, $options);
     }
 }
