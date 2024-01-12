@@ -18,7 +18,7 @@ class PageMeta
         $this->page = $page;
     }
 
-    public function head(): string
+    public function head(): array
     {
         $meta = [];
         $opengraph = [];
@@ -56,26 +56,10 @@ class PageMeta
         // Robots
         $meta['robots'] = $this->page->robots()->isNotEmpty() ? $this->page->robots()->value() : 'index,follow';
 
-        // Generate markup
-        $html = [];
-
-        // Generate Meta Tags
-        foreach ($meta as $name => $content) {
-            $html[] = Html::tag('meta', null, [
-                'name' => $name,
-                'content' => $content,
-            ]);
-        }
-
-        // Generate Open Graph Tags
-        foreach ($opengraph as $prop => $content) {
-            $html[] = Html::tag('meta', null, [
-                'property' => $prop,
-                'content' => $content,
-            ]);
-        }
-
-        return implode(PHP_EOL, $html) . PHP_EOL;
+        return [
+            'meta' => $meta,
+            'opengraph' => $opengraph,
+        ];
     }
 
     /**

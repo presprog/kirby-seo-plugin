@@ -25,6 +25,10 @@ Kirby::plugin('presprog/meta', [
         },
     ],
 
+    'snippets' => [
+        'seo/head' => __DIR__. '/snippets/seo/head.php',
+    ],
+
     'routes' => [
         [
             'pattern' => 'robots.txt',
