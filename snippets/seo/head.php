@@ -1,33 +1,35 @@
 <?php declare(strict_types=1);
 
 /**
- * @var Page $page
  * @var Site $site
+ * @var Page $page
  */
 
-use Kirby\Cms\Html;
 use Kirby\Cms\Page;
 use Kirby\Cms\Site;
+use Kirby\Toolkit\Html;
+use PresProg\KirbyMeta\PageMeta;
 
-?>
+/** @var PageMeta $meta */
+$meta = $page->meta();
 
-<title><?= $page->meta()->title()->html() ?></title>
+// Meta tags
+echo Html::tag('title', $meta->fullTitle()) . PHP_EOL;
+echo Html::tag('meta', null, ['name' => 'description', 'content' => $meta->description()]) . PHP_EOL;
 
-<?php
-['meta' => $meta, 'opengraph' => $opengraph] = $page->meta()->head();
+// Open Graph tags
+echo Html::tag('meta', null, ['property' => 'og:site_name', 'content' => $meta->siteTitle()]) . PHP_EOL;
+echo Html::tag('meta', null, ['property' => 'og:type', 'content' => $meta->ogType()]) . PHP_EOL;
+echo Html::tag('meta', null, ['property' => 'og:url', 'content' => $meta->ogUrl()]) . PHP_EOL;
+echo Html::tag('meta', null, ['property' => 'og:title', 'content' => $meta->fullTitle()]) . PHP_EOL;
+echo Html::tag('meta', null, ['property' => 'og:description', 'content' => $meta->description()]) . PHP_EOL;
 
-// Generate Meta Tags
-foreach ($meta as $name => $content) {
-    Html::tag('meta', null, [
-        'name'    => $name,
-        'content' => $content,
-    ]) . PHP_EOL;
+foreach ($meta->ogImage() as $property => $content) {
+    echo Html::tag('meta', null, ['property' => $property, 'content' => $content]) . PHP_EOL;
 }
 
-// Generate Open Graph Tags
-foreach ($opengraph as $prop => $content) {
-    Html::tag('meta', null, [
-        'property' => $prop,
-        'content'  => $content,
-    ]) . PHP_EOL;
-}
+// Robots
+echo Html::tag('meta', null, ['property' => 'robots', 'content' => $meta->robots()]) . PHP_EOL;
+
+// Links
+echo Html::tag('link', null, ['rel' => 'canonical', 'href' => $meta->canonicalUrl()]) . PHP_EOL;

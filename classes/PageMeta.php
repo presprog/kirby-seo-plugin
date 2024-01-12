@@ -2,67 +2,35 @@
 
 namespace PresProg\KirbyMeta;
 
+use Kirby\Cms\File;
 use Kirby\Cms\Page;
 use Kirby\Content\Field;
-use Kirby\Cms\File;
-use Kirby\Toolkit\Html;
 
-/**
- *
- */
-class PageMeta
+readonly class PageMeta
 {
     public function __construct(private Page $page, private PageMetaOptions $options)
     {
     }
 
-    public function head(): array
+    public function siteTitle(): string
     {
-        $meta = [];
-        $opengraph = [];
-        $site = site();
+        return $this->page->site()->title()->value();
+    }
 
-        // Basic OpenGraph tags
-        $opengraph['og:site_name'] = $site->title()->value();
-        $opengraph['og:url'] = $this->page->url();
-        $opengraph['og:type'] = 'website';
+    public function fullTitle(): string
+    {
+        $fullTitle = $this->title()->html();
 
-        $opengraph['og:title'] = $this->title() . ' | ' . $site->title();
-
-        // Meta and OpenGraph description
-        $description = $this->description();
-
-        if ($description->isNotEmpty()) {
-            $opengraph['og:description'] = $description->excerpt(200);
-            $meta['description'] = $description->excerpt(160);
+        if ($this->options->appendSiteTitle) {
+            $fullTitle = $this->title()->html() . $this->options->titleSeparator . site()->title()->html();
         }
 
-        // Image
-        $openGraphImage = $this->openGraphImage();
-        if ($openGraphImage) {
-            $croppedOgImage = $openGraphImage->crop(1200, 630);
-
-            $opengraph['og:image'] = $croppedOgImage->url();
-            $opengraph['og:image:width'] = $croppedOgImage->width();
-            $opengraph['og:image:height'] = $croppedOgImage->height();
-
-            if ($openGraphImage->alt()->isNotEmpty()) {
-                $opengraph['og:image:alt'] = $openGraphImage->alt()->value();
-            }
-        }
-
-        // Robots
-        $meta['robots'] = $this->page->robots()->isNotEmpty() ? $this->page->robots()->value() : 'index,follow';
-
-        return [
-            'meta' => $meta,
-            'opengraph' => $opengraph,
-        ];
+        return $fullTitle;
     }
 
     /**
-     * 1. Page has custom meta title defined OR
-     * 2. Fall back to page title
+     * Returns the custom meta title OR
+     * falls back to the regular page title.
      */
     public function title(): Field
     {
@@ -70,10 +38,6 @@ class PageMeta
 
         if ($metaTitle->isEmpty()) {
             $metaTitle = $this->page->title();
-        }
-
-        if ($this->options->appendSiteTitle) {
-            return new Field($this->page, '_metaTitle', $metaTitle . $this->options->titleSeparator . $this->page->site()->title());
         }
 
         return $metaTitle;
@@ -84,9 +48,8 @@ class PageMeta
      * 2. Site has default meta description defined OR
      * 3. Page has `text` field that is not empty OR
      * 4. Fall back to empty string
-     * @return string
      */
-    public function description()
+    public function description(): Field
     {
         $metaDescription = $this->page->metaDescription();
 
@@ -108,7 +71,7 @@ class PageMeta
     public function openGraphImage(): ?File
     {
         if (method_exists($this->page, 'getOpenGraphImage')) {
-            return  $this->page->getOpenGraphImage();
+            return $this->page->getOpenGraphImage();
         }
 
         if ($this->page->ogImage()->isNotEmpty()) {
@@ -120,6 +83,52 @@ class PageMeta
         }
 
         return null;
+    }
+
+    public function ogType(): string
+    {
+        return 'website';
+    }
+
+    public function ogUrl(): string
+    {
+        return $this->page->url();
+    }
+
+    /**
+     * @return array{"og:image": string, "og:image:width": int, "og:image:height": int, "og:image:alt"?: string}
+     */
+    public function ogImage(): array
+    {
+        $props = [];
+
+        $image = $this->openGraphImage();
+
+        if (!$image) {
+            return [];
+        }
+
+        $cropped = $image->crop($this->options->ogImageWidth, $this->options->ogImageHeight);
+
+        $props['og:image'] = $cropped->url();
+        $props['og:image:width'] = $cropped->width();
+        $props['og:image:height'] = $cropped->height();
+
+        if ($image->alt()->isNotEmpty()) {
+            $props['og:image:alt'] = $image->alt()->value();
+        }
+
+        return $props;
+    }
+
+    public function canonicalUrl(): string
+    {
+        return $this->page->url();
+    }
+
+    public function robots(): string
+    {
+        return $this->page->robots()->isNotEmpty() ? $this->page->robots()->value() : 'index,follow';
     }
 
     public function getFile(string $key, bool $fallback = true): ?File
