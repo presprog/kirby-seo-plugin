@@ -14,6 +14,8 @@ Kirby::plugin('presprog/meta', [
     ],
 
     'options' => [
+        'meta.appendSiteTitle'     => true,
+        'meta.titleSeparator'      => ' | ',
         'sitemap.templatesInclude' => [],
         'sitemap.pagesInclude'     => [],
         'sitemap.pagesExclude'     => [],
@@ -21,12 +23,12 @@ Kirby::plugin('presprog/meta', [
 
     'pageMethods' => [
         'meta' => function () {
-            return new PageMeta($this);
+            return PageMeta::for($this);
         },
     ],
 
     'snippets' => [
-        'seo/head' => __DIR__. '/snippets/seo/head.php',
+        'seo/head' => __DIR__ . '/snippets/seo/head.php',
     ],
 
     'routes' => [
