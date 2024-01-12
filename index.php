@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Kirby\Cms\App as Kirby;
 use Kirby\Cms\Language;
