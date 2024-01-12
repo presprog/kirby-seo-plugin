@@ -158,46 +158,6 @@ class PageMeta
         return $this->getFile('ogImage', false) !== null;
     }
 
-    public function jsonld(): string
-    {
-        $html = [];
-        $sameAs = [];
-
-        if (site()->companySocialMedia()->isNotEmpty()) {
-            foreach (site()->companySocialMedia()->toStructure() as $profile) {
-                $sameAs[] = $profile->link()->html();
-            }
-        }
-
-        $address = site()->companyAddress()->value() . ', ' . site()->companyPostal()->value() . ' ' . site()->companyCity()->value() . ',' . site()->companyCountry()->value();
-
-        $json = [
-            '@context' => 'https://schema.org',
-            '@graph' => [
-                [
-                    '@type' => 'Organization',
-                    'name' => site()->companyName()->value(),
-                    'legalName' => site()->companyLegalName()->value(),
-                    'telephone' => site()->companyFon()->value(),
-                    'email' => site()->companyMail()->value(),
-                    'address' => $address,
-                    'sameAs' => $sameAs,
-                    'url' => url()
-                ],
-                [
-                    '@type' => 'WebSite',
-                    'url' => url()
-                ]
-            ]
-        ];
-
-        $html[] = '<script type="application/ld+json">';
-        $html[] = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-        $html[] = '</script>';
-
-        return implode(PHP_EOL, $html) . PHP_EOL;
-    }
-
     public function priority(): float
     {
         $priority = null;

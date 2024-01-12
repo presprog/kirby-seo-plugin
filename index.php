@@ -10,8 +10,7 @@ use PresProg\KirbyMeta\PageMeta;
 Kirby::plugin('presprog/meta', [
 
     'blueprints' => [
-        'tabs/meta'          => __DIR__ . '/blueprints/tabs/meta.yml',
-        'fields/companyInfo' => __DIR__ . '/blueprints/fields/companyInfo.yml',
+        'tabs/meta' => __DIR__ . '/blueprints/tabs/meta.yml',
     ],
 
     'options' => [
