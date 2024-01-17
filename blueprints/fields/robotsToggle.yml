@@ -1,0 +1,5 @@
+type: toggle
+text:
+  - seo-tab-robots-disallow
+  - seo-tab-robots-allow
+default: true

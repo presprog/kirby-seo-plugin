@@ -18,3 +18,9 @@ seo-tab-robots-images-help: Suchmaschinen dürfen die Bilder auf dieser Seite in
 
 seo-tab-robots-allow: Zulassen
 seo-tab-robots-disallow: Nicht zulassen
+
+# Site fallbacks
+seo-tab-meta-description-fallback: Seitenbeschreibung (Fallback)
+seo-tab-meta-description-fallback-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
+seo-tab-og-image-fallback: Open-Graph-Bild (Fallback)
+seo-tab-og-image-fallback-help: Vorschaubild für Soziale Netzwerke. Wird verwendet, falls eine Seite kein Vorschaubild hinterlegt hat.

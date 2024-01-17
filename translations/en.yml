@@ -18,3 +18,9 @@ seo-tab-robots-images-help: Search engines may index images on this page
 
 seo-tab-robots-allow: Allow
 seo-tab-robots-disallow: Disallow
+
+# Site fallbacks
+seo-tab-meta-description-fallback: Meta description (Fallback)
+seo-tab-meta-description-fallback-help: "Rule of 👍 – not longer than a text message (160 characters). Will be displayed on search engine result pages."
+seo-tab-og-image-fallback: Open Graph Image (Fallback)
+seo-tab-og-image-fallback-help: Share image for social media platforms. Will be used if a page does not have a custom share image.
