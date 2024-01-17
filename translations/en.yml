@@ -5,5 +5,16 @@ seo-tab-meta-description: Meta description
 seo-tab-meta-description-help: "As a rule of 👍 not longer than a text message (160 characters). Will be displayed on search engine result pages."
 seo-tab-og-image: Open Graph Image
 seo-tab-og-image-help: Preview image for social media platforms
-seo-tab-robots: Robots
-seo-tab-robots-help: Instructions for search engine crawler on how to index your content
+
+seo-tab-robots-headline: Robots
+seo-tab-robots-index: Indexing
+seo-tab-robots-index-help: Search engines may index this page
+seo-tab-robots-follow: Following
+seo-tab-robots-follow-help: Search engines may crawl this page for new links
+seo-tab-robots-archive: Archiving
+seo-tab-robots-archive-help: Search engines may archive this page
+seo-tab-robots-images: Image indexing
+seo-tab-robots-images-help: Search engines may index images on this page
+
+seo-tab-robots-allow: Allow
+seo-tab-robots-disallow: Disallow

@@ -128,7 +128,14 @@ readonly class PageMeta
 
     public function robots(): string
     {
-        return $this->page->robots()->isNotEmpty() ? $this->page->robots()->value() : 'index,follow';
+        $robots = [
+            $this->page->robotsIndex()->toBool() ? 'index' : 'noindex',
+            $this->page->robotsFollow()->toBool() ? 'follow' : 'nofollow',
+            $this->page->robotsArchive()->toBool() ? 'archive' : 'noarchive',
+            $this->page->robotsImages()->toBool() ? 'imageindex' : 'noimageindex',
+        ];
+
+        return implode(', ', $robots);
     }
 
     public function getFile(string $key, bool $fallback = true): ?File

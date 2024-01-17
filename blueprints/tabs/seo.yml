@@ -17,13 +17,44 @@ fields:
     files: images
     multiple: false
     help: seo-tab-og-image-help
-  robots:
-    label: seo-tab-robots
-    type: select
+
+  robotsHeadline:
+    label: seo-tab-robots-headline
+    type: headline
+    numbered: false
+  robotsIndex:
+    label: seo-tab-robots-index
+    type: toggle
+    text:
+      - seo-tab-robots-disallow
+      - seo-tab-robots-allow
+    default: true
     width: 1/2
-    options:
-      - 'index,nofollow'
-      - 'noindex,follow'
-      - 'noindex,nofollow'
-    placeholder: 'index,follow (Standard)'
-    help: seo-tab-robots-help
+    help: seo-tab-robots-index-help
+  robotsFollow:
+    label: seo-tab-robots-follow
+    type: toggle
+    text:
+      - seo-tab-robots-disallow
+      - seo-tab-robots-allow
+    default: true
+    width: 1/2
+    help: seo-tab-robots-follow-help
+  robotsArchive:
+    label: seo-tab-robots-archive
+    type: toggle
+    text:
+      - seo-tab-robots-disallow
+      - seo-tab-robots-allow
+    default: true
+    width: 1/2
+    help: seo-tab-robots-archive-help
+  robotsImages:
+    label: seo-tab-robots-images
+    type: toggle
+    text:
+      - seo-tab-robots-disallow
+      - seo-tab-robots-allow
+    default: true
+    width: 1/2
+    help: seo-tab-robots-images-help
