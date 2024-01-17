@@ -24,8 +24,13 @@ echo Html::tag('meta', null, ['property' => 'og:url', 'content' => $meta->ogUrl(
 echo Html::tag('meta', null, ['property' => 'og:title', 'content' => $meta->fullTitle()]) . PHP_EOL;
 echo Html::tag('meta', null, ['property' => 'og:description', 'content' => $meta->description()]) . PHP_EOL;
 
-foreach ($meta->ogImage() as $property => $content) {
-    echo Html::tag('meta', null, ['property' => $property, 'content' => $content]) . PHP_EOL;
+if ($image = $meta->ogImage()) {
+    echo Html::tag('meta', null, ['property' => 'og:image', 'content' => $image['url']]) . PHP_EOL;
+    echo Html::tag('meta', null, ['property' => 'og:image:width', 'content' => $image['width']]) . PHP_EOL;
+    echo Html::tag('meta', null, ['property' => 'og:image:height', 'content' => $image['height']]) . PHP_EOL;
+    if ($alt = $image['alt']) {
+        echo Html::tag('meta', null, ['property' => 'og:image:alt', 'content' => $alt]) . PHP_EOL;
+    }
 }
 
 // Robots
