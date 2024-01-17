@@ -5,5 +5,16 @@ seo-tab-meta-description: Seitenbeschreibung
 seo-tab-meta-description-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
 seo-tab-og-image: Open-Graph-Bild
 seo-tab-og-image-help: Vorschaubild für Soziale Netzwerke
-seo-tab-robots: Robots
-seo-tab-robots-help: Anweisungen für Suchmaschinen-Crawler zur Indexierung deiner Inhalte
+
+seo-tab-robots-headline: Robots
+seo-tab-robots-index: Indexierung
+seo-tab-robots-index-help: Suchmaschinen dürfen diese Seite indexieren
+seo-tab-robots-follow: Links folgen
+seo-tab-robots-follow-help: Suchmaschinen dürften diese Seite nach neuen Links durchsuchen
+seo-tab-robots-archive: Archivierung
+seo-tab-robots-archive-help: Suchmaschinen dürfen diese Seite archivieren
+seo-tab-robots-images: Bildindexierung
+seo-tab-robots-images-help: Suchmaschinen dürfen die Bilder auf dieser Seite indexieren
+
+seo-tab-robots-allow: Zulassen
+seo-tab-robots-disallow: Nicht zulassen
