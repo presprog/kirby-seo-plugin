@@ -1,0 +1,30 @@
+type: group
+fields:
+  robotsHeadline:
+    label: seo-tab-robots-headline
+    type: headline
+    numbered: false
+
+  robotsIndex:
+    extends: seo/fields/robotsToggle
+    label: seo-tab-robots-index
+    help: seo-tab-robots-index-help
+    width: 1/2
+
+  robotsFollow:
+    extends: seo/fields/robotsToggle
+    label: seo-tab-robots-follow
+    help: seo-tab-robots-follow-help
+    width: 1/2
+
+  robotsArchive:
+    extends: seo/fields/robotsToggle
+    label: seo-tab-robots-archive
+    help: seo-tab-robots-archive-help
+    width: 1/2
+
+  robotsImages:
+    extends: seo/fields/robotsToggle
+    label: seo-tab-robots-images
+    help: seo-tab-robots-images-help
+    width: 1/2
