@@ -96,27 +96,24 @@ readonly class PageMeta
     }
 
     /**
-     * @return array{"og:image": string, "og:image:width": int, "og:image:height": int, "og:image:alt"?: string}
+     * @return array{"url": string, "width": int, "height": int, "alt"?: string}|null
      */
-    public function ogImage(): array
+    public function ogImage(): ?array
     {
         $props = [];
 
         $image = $this->openGraphImage();
 
         if (!$image) {
-            return [];
+            return null;
         }
 
         $cropped = $image->crop($this->options->ogImageWidth, $this->options->ogImageHeight);
 
-        $props['og:image'] = $cropped->url();
-        $props['og:image:width'] = $cropped->width();
-        $props['og:image:height'] = $cropped->height();
-
-        if ($image->alt()->isNotEmpty()) {
-            $props['og:image:alt'] = $image->alt()->value();
-        }
+        $props['url'] = $cropped->url();
+        $props['width'] = $cropped->width();
+        $props['height'] = $cropped->height();
+        $props['alt'] = $image->alt()->isNotEmpty() ? $image->alt()->value() : '';
 
         return $props;
     }
