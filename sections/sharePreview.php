@@ -6,24 +6,9 @@ use PresProg\KirbyMeta\PageMetaOptions;
 return [
     'computed' => [
 
-        'metaOptions' => function() {
-            return PageMetaOptions::fromOptions();
-        },
-
-        'siteTitle' => function(): string {
+        'siteTitle' => function (): string {
             /** @var Section $this */
             return $this->model()->site()->title()->toString();
-        },
-
-        'pageTitle' => function(): string {
-            /** @var Section $this */
-            return $this->model()->title()->toString();
-        },
-
-        'pageUrl' => function(): string
-        {
-            /** @var Section $this */
-            return $this->model()->url();
         },
 
         'siteDescription' => function (): string {
@@ -31,9 +16,22 @@ return [
             return $this->model()->site()->metaDescription()->toString();
         },
 
-        'siteImage' => function(): string
-        {
-            return $this->model()->ogImage()->toString();
+        'siteImage' => function (): string {
+            return $this->model()->site()->ogImage()->toFile()?->url() ?? '';
+        },
+
+        'pageTitle' => function (): string {
+            /** @var Section $this */
+            return $this->model()->title()->toString();
+        },
+
+        'pageUrl' => function (): string {
+            /** @var Section $this */
+            return $this->model()->url();
+        },
+
+        'metaOptions' => function (): PageMetaOptions {
+            return PageMetaOptions::fromOptions();
         },
     ],
 ];
