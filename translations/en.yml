@@ -2,9 +2,10 @@
 seo-tab-label: SEO
 seo-tab-meta-headline: Meta data
 seo-tab-meta-title: Meta title
+seo-tab-meta-title-help: "A deviating page title for search engines and social media platforms"
 seo-tab-meta-description: Meta description
-seo-tab-meta-description-help: "Rule of 👍 – not longer than a text message (160 characters). Will be displayed on search engine result pages."
-seo-tab-og-image: Open Graph Image
+seo-tab-meta-description-help: "A short summary of the page content. Rule of 👍 – not longer than a text message (160 characters)"
+seo-tab-og-image: Share Pic
 seo-tab-og-image-help: Preview image for social media platforms
 
 seo-tab-robots-headline: Robots
@@ -23,11 +24,11 @@ seo-tab-robots-disallow: Disallow
 # Site fallbacks
 seo-tab-meta-description-fallback: Meta description (Fallback)
 seo-tab-meta-description-fallback-help: "Rule of 👍 – not longer than a text message (160 characters). Will be displayed on search engine result pages."
-seo-tab-og-image-fallback: Open Graph Image (Fallback)
-seo-tab-og-image-fallback-help: Share image for social media platforms. Will be used if a page does not have a custom share image.
+seo-tab-og-image-fallback: Share Pic (Fallback)
+seo-tab-og-image-fallback-help: This is mostly displayed by social media platforms when posting a link. Will be used if a page does not have a custom share pic.
 
 ### Share Preview
 share-preview-section-title: Share Preview
 share-preview-serp-caption: Search engines list your page with title, a short snippet and url.
-share-preview-social-caption: Social media platforms usually show the share image.
-share-preview-messaging-caption: Instant messaging apps might display a preview of your link, too.
+share-preview-social-caption: Social media platforms usually show the share pic.
+share-preview-messaging-caption: Instant messaging apps may display a preview of your link, too.

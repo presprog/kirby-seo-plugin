@@ -2,10 +2,11 @@
 seo-tab-label: SEO
 seo-tab-meta-headline: Metadaten
 seo-tab-meta-title: Seitentitel
+seo-tab-meta-title-help: Ein abweichender Seitentitel für Suchmaschinen und soziale Netzwerke
 seo-tab-meta-description: Seitenbeschreibung
-seo-tab-meta-description-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
-seo-tab-og-image: Open-Graph-Bild
-seo-tab-og-image-help: Vorschaubild für Soziale Netzwerke
+seo-tab-meta-description-help: "Eine kurze Zusammenfassung des Seiteninhalts. &pi; × 👍 eine SMS-Länge (160 Zeichen)"
+seo-tab-og-image: Share Pic
+seo-tab-og-image-help: Vorschaubild für soziale Netzwerke
 
 seo-tab-robots-headline: Robots
 seo-tab-robots-index: Indexierung
@@ -23,12 +24,12 @@ seo-tab-robots-disallow: Nicht zulassen
 ## Site fallbacks
 seo-tab-meta-description-fallback: Seitenbeschreibung (Fallback)
 seo-tab-meta-description-fallback-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
-seo-tab-og-image-fallback: Open-Graph-Bild (Fallback)
-seo-tab-og-image-fallback-help: Vorschaubild für Soziale Netzwerke. Wird verwendet, falls eine Seite kein Vorschaubild hinterlegt hat.
+seo-tab-og-image-fallback: Share Pic (Fallback)
+seo-tab-og-image-fallback-help: Vorschaubild für soziale Netzwerke. Wird verwendet, falls eine Seite kein Vorschaubild hinterlegt hat.
 
 
 ### Share Preview
 share-preview-section-title: Share Vorschau
 share-preview-serp-caption: Suchmaschinen listen die Seite mit Titel, einer kurzen Beschreibung und dem Link.
-share-preview-social-caption: Social media platforms usually show the share image. Soziale Netzwerke zeigen üblicherweise dazu auch das Vorschaubild.
-share-preview-messaging-caption: Kurznachrichten-Apps zeigen möglicherweise auch eine kurze Vorschau des geteilten Links.
+share-preview-social-caption: Soziale Netzwerke zeigen üblicherweise dazu auch das Vorschaubild.
+share-preview-messaging-caption: Kurznachrichten-Apps zeigen wahrscheinlich auch eine kurze Vorschau des geteilten Links.

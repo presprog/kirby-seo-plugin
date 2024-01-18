@@ -4,13 +4,15 @@ label: seo-tab-label
 extends: seo/tabs/page
 columns:
   settings:
-    fields:
-      metaTitle: false # Global fallback meta title does not make sense
-      metaDescription:
-        label: seo-tab-meta-description-fallback
-        help: seo-tab-meta-description-fallback-help
-      ogImage:
-        label: seo-tab-og-image-fallback
-        help: seo-tab-og-image-fallback-help
-      robots: false # No global fallback for robots settings. All pages will be crawlable by default, if not disallowed
+    sections:
+      fields:
+        fields:
+          metaTitle: false # Global fallback meta title does not make sense
+          metaDescription:
+            label: seo-tab-meta-description-fallback
+            help: seo-tab-meta-description-fallback-help
+          ogImage:
+            label: seo-tab-og-image-fallback
+            help: seo-tab-og-image-fallback-help
+          robots: false # No global fallback for robots settings. All pages will be crawlable by default, if not disallowed
   preview: false

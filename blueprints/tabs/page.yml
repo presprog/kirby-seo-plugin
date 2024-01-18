@@ -17,6 +17,7 @@ columns:
             label: seo-tab-meta-title
             type: text
             width: 1/2
+            help: seo-tab-meta-title-help
           metaDescription:
             label: seo-tab-meta-description
             type: textarea
