@@ -2,8 +2,8 @@
   <div class="messaging-preview" :class="{ 'with-image': !!this.image }">
     <img v-if="this.image" :src="this.image" alt="">
     <div class="inner">
-      <strong>{{ this.title }}</strong>
-      <p>{{ this.description }}</p>
+      <strong>{{ title }}</strong>
+      <p v-if="description">{{ description }}</p>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
   border-radius: var(--input-rounded);
   box-shadow: var(--shadow);
   color: #4d5156;
+  min-height: var(--min-preview-height);
 }
 
 .messaging-preview.with-image {
