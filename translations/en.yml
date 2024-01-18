@@ -1,5 +1,6 @@
-# SEO tab
+### SEO tab
 seo-tab-label: SEO
+seo-tab-meta-headline: Meta data
 seo-tab-meta-title: Meta title
 seo-tab-meta-description: Meta description
 seo-tab-meta-description-help: "Rule of 👍 – not longer than a text message (160 characters). Will be displayed on search engine result pages."
@@ -24,3 +25,9 @@ seo-tab-meta-description-fallback: Meta description (Fallback)
 seo-tab-meta-description-fallback-help: "Rule of 👍 – not longer than a text message (160 characters). Will be displayed on search engine result pages."
 seo-tab-og-image-fallback: Open Graph Image (Fallback)
 seo-tab-og-image-fallback-help: Share image for social media platforms. Will be used if a page does not have a custom share image.
+
+### SEO Preview
+seo-preview-section-title: Sharing Preview
+seo-preview-serp-caption: Search engines list your page with title, a short snippet and url.
+seo-preview-social-caption: Social media platforms usually show the share image.
+seo-preview-messaging-caption: Instant messaging apps might display a preview of your link, too.

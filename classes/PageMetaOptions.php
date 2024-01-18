@@ -22,4 +22,14 @@ readonly class PageMetaOptions
             ogImageHeight: option('presprog.meta.meta.ogImageHeight', 630),
         );
     }
+
+    public function toArray(): array
+    {
+        return [
+            'title_separator'   => $this->titleSeparator,
+            'append_site_title' => $this->appendSiteTitle,
+            'og_image_width'    => $this->ogImageWidth,
+            'og_image_height'   => $this->ogImageHeight,
+        ];
+    }
 }

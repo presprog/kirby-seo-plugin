@@ -1,5 +1,6 @@
-# Meta tab
+# SEO tab
 seo-tab-label: SEO
+seo-tab-meta-headline: Metadaten
 seo-tab-meta-title: Seitentitel
 seo-tab-meta-description: Seitenbeschreibung
 seo-tab-meta-description-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
@@ -19,8 +20,15 @@ seo-tab-robots-images-help: Suchmaschinen dürfen die Bilder auf dieser Seite in
 seo-tab-robots-allow: Zulassen
 seo-tab-robots-disallow: Nicht zulassen
 
-# Site fallbacks
+## Site fallbacks
 seo-tab-meta-description-fallback: Seitenbeschreibung (Fallback)
 seo-tab-meta-description-fallback-help: "&pi; × 👍 eine SMS-Länge (160 Zeichen). Wird auf der Google Suchergebnisseite ausgegeben."
 seo-tab-og-image-fallback: Open-Graph-Bild (Fallback)
 seo-tab-og-image-fallback-help: Vorschaubild für Soziale Netzwerke. Wird verwendet, falls eine Seite kein Vorschaubild hinterlegt hat.
+
+
+### SEO Preview
+seo-preview-section-title: Sharing Vorschau
+seo-preview-serp-caption: Suchmaschinen listen die Seite mit Titel, einer kurzen Beschreibung und dem Link.
+seo-preview-social-caption: Social media platforms usually show the share image. Soziale Netzwerke zeigen üblicherweise dazu auch das Vorschaubild.
+seo-preview-messaging-caption: Kurznachrichten-Apps zeigen möglicherweise auch eine kurze Vorschau des geteilten Links.
