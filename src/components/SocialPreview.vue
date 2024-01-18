@@ -2,8 +2,8 @@
   <div class="social-preview">
     <img v-if="this.image" :src="this.image">
     <div class="inner">
-      <strong>{{ this.title }}</strong>
-      <p>{{ this.description }}</p>
+      <strong>{{ title }}</strong>
+      <p v-if="description">{{ description }}</p>
     </div>
   </div>
 </template>
@@ -23,6 +23,7 @@ export default {
   background-color: white;
   border-radius: var(--input-rounded);
   box-shadow: var(--shadow);
+  min-height: var(--min-preview-height);
 }
 .inner {
   padding: 0.5rem 0.75rem 0.75rem;

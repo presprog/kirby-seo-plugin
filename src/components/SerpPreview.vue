@@ -3,8 +3,8 @@
     <span class="url">
       {{ base }}<span v-for="fragment of path">{{ ' › ' + fragment }}</span>
     </span>
-    <strong>{{ this.title }}</strong>
-    <p>{{ this.description }}</p>
+    <strong>{{ title }}</strong>
+    <p v-if="description">{{ description }}</p>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
   background-color: white;
   border-radius: var(--input-rounded);
   box-shadow: var(--shadow);
+  min-height: calc(2rem + var(--min-preview-height));
 }
 .url {
   display: block;

@@ -102,15 +102,15 @@ export default {
 .k-headline {
   font-weight: var(--font-normal);
 }
-
 .k-grid {
   --columns: 1;
 }
-
+.preview-wrapper {
+  --min-preview-height: 5rem;
+}
 .preview-wrapper h3 {
   margin-bottom: 0.5rem;
 }
-
 figcaption {
   margin-top: var(--spacing-2);
   font-size: var(--text-font-size);
