@@ -1,24 +1,24 @@
 <template>
-  <k-section v-if="!isLoading" class="k-seo-preview-section">
+  <k-section v-if="!isLoading" class="k-share-preview-section">
 
     <div class="k-grid" data-variant="fields">
       <header class="k-section-header">
-        <h2 class="k-headline h2">{{ $t('seo-preview-section-title') }}</h2>
+        <h2 class="k-headline h2">{{ $t('share-preview-section-title') }}</h2>
       </header>
 
       <figure class="preview-wrapper">
         <SerpPreview :title="title" :description="description" :url="this.pageUrl" />
-        <figcaption class="k-help k-text"><p>{{ $t('seo-preview-serp-caption') }}</p></figcaption>
+        <figcaption class="k-help k-text"><p>{{ $t('share-preview-serp-caption') }}</p></figcaption>
       </figure>
 
       <figure class="preview-wrapper">
         <SocialPreview :title="title" :description="description" :image="this.image" />
-        <figcaption class="k-help k-text"><p>{{ $t('seo-preview-social-caption') }}</p></figcaption>
+        <figcaption class="k-help k-text"><p>{{ $t('share-preview-social-caption') }}</p></figcaption>
       </figure>
 
       <figure class="preview-wrapper">
         <MessagingPreview :title="title" :description="description" :image="this.image" />
-        <figcaption class="k-help k-text"><p>{{ $t('seo-preview-messaging-caption') }}</p></figcaption>
+        <figcaption class="k-help k-text"><p>{{ $t('share-preview-messaging-caption') }}</p></figcaption>
       </figure>
 
     </div>
@@ -33,10 +33,6 @@ import MessagingPreview from './MessagingPreview.vue'
 
 export default {
   components: { MessagingPreview, SerpPreview, SocialPreview },
-
-  props: {
-    label: String,
-  },
 
   computed: {
     currentContent() {

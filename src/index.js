@@ -1,8 +1,8 @@
-import SeoPreview from './components/SeoPreview.vue'
+import SharePreview from './components/SharePreview.vue'
 
-window.panel.plugin('getkirby/pluginkit', {
+window.panel.plugin('presprog/meta', {
   sections: {
-    seoPreview: SeoPreview,
+    sharePreview: SharePreview,
   },
   use: {
     plugin(Vue) {
