@@ -30,8 +30,8 @@ columns:
             help: seo-tab-og-image-help
           robots: seo/fields/robotsGroup
 
-  seoPreview:
+  preview:
     width: 1/3
     sections:
-      seoPreview:
-        type: seoPreview
+      sharePreview:
+        type: sharePreview

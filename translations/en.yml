@@ -26,8 +26,8 @@ seo-tab-meta-description-fallback-help: "Rule of 👍 – not longer than a text
 seo-tab-og-image-fallback: Open Graph Image (Fallback)
 seo-tab-og-image-fallback-help: Share image for social media platforms. Will be used if a page does not have a custom share image.
 
-### SEO Preview
-seo-preview-section-title: Sharing Preview
-seo-preview-serp-caption: Search engines list your page with title, a short snippet and url.
-seo-preview-social-caption: Social media platforms usually show the share image.
-seo-preview-messaging-caption: Instant messaging apps might display a preview of your link, too.
+### Share Preview
+share-preview-section-title: Share Preview
+share-preview-serp-caption: Search engines list your page with title, a short snippet and url.
+share-preview-social-caption: Social media platforms usually show the share image.
+share-preview-messaging-caption: Instant messaging apps might display a preview of your link, too.

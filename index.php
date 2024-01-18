@@ -37,7 +37,7 @@ Kirby::plugin('presprog/meta', [
     ],
 
     'sections' => [
-        'seoPreview' => __DIR__ .'/sections/seoPreview.php',
+        'sharePreview' => __DIR__ .'/sections/sharePreview.php',
     ],
 
     'routes' => [
