@@ -36,6 +36,10 @@ Kirby::plugin('presprog/meta', [
         'seo/head' => __DIR__ . '/snippets/seo/head.php',
     ],
 
+    'sections' => [
+        'seoPreview' => __DIR__ .'/sections/seoPreview.php',
+    ],
+
     'routes' => [
         [
             'pattern' => 'robots.txt',
