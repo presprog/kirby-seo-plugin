@@ -64,29 +64,21 @@ export default {
     },
 
     image() {
-      let image
-
-      if (this.currentContent.ogimage) {
-        image = this.currentContent.ogimage
-      } else {
-        image = this.siteImage ? this.siteImage : null
+      if (this.currentContent.ogimage.length > 0) {
+        return this.currentContent.ogimage[0].url
       }
 
-      if (!image || Array.isArray(image) && image.length === 0) {
-        return ''
-      }
-
-      return image[0].url
-    }
+      return this.siteImage ? this.siteImage : ''
     },
+  },
 
   created() {
     this.load().then(response => {
       this.siteTitle = response.siteTitle
+      this.siteDescription = response.siteDescription
       this.siteImage = response.siteImage
       this.pageTitle = response.pageTitle
       this.pageUrl = new URL(response.pageUrl)
-      this.siteDescription = response.siteDescription
       this.metaOptions = response.metaOptions
       this.isLoading = false
     })
@@ -94,12 +86,13 @@ export default {
 
   data() {
     return {
-      isLoading:   true,
-      siteTitle:   '',
-      siteImage:   '',
-      pageTitle:   '',
-      pageUrl:     '',
-      metaOptions: {},
+      isLoading:       true,
+      siteTitle:       '',
+      siteDescription: '',
+      siteImage:       '',
+      pageTitle:       '',
+      pageUrl:         '',
+      metaOptions:     {},
     }
   },
 }
