@@ -70,19 +70,23 @@ readonly class PageMeta
 
     public function openGraphImage(): ?File
     {
+        $image = null;
+
         if (method_exists($this->page, 'getOpenGraphImage')) {
-            return $this->page->getOpenGraphImage();
+            $image = $this->page->getOpenGraphImage();
         }
 
-        if ($this->page->ogImage()->isNotEmpty()) {
+        if (is_null($image) && $this->page->ogImage()->isNotEmpty()) {
             return $this->page->ogImage()->first()->toFile();
         }
 
-        if (site()->ogImage()->isNotEmpty()) {
-            return site()->ogImage()->first()->toFile();
+        $site = $this->page->site();
+
+        if (is_null($image) && $site->ogImage()->isNotEmpty()) {
+            return $site->ogImage()->first()->toFile();
         }
 
-        return null;
+        return ($image) ?: null;
     }
 
     public function ogType(): string

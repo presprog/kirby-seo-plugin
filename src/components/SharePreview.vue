@@ -62,6 +62,10 @@ export default {
         return this.currentContent.ogimage[0].url
       }
 
+      if (this.pageImage) {
+        return this.pageImage
+      }
+
       return this.siteImage ? this.siteImage : ''
     },
   },
@@ -78,6 +82,7 @@ export default {
       siteDescription: '',
       siteImage:       '',
       pageTitle:       '',
+      pageImage:       '',
       pageUrl:         '',
       metaOptions:     {},
     }
@@ -90,6 +95,7 @@ export default {
         this.siteDescription = response.siteDescription
         this.siteImage = response.siteImage
         this.pageTitle = response.pageTitle
+        this.pageImage = response.pageImage
         this.pageUrl = new URL(response.pageUrl)
         this.metaOptions = response.metaOptions
         this.isLoading = false
