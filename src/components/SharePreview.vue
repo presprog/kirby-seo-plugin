@@ -67,7 +67,7 @@ export default {
   },
 
   created() {
-    this.$events.on("page.changeTitle", this.reload)
+    this.$events.on("page.changeTitle", this.fetch)
     this.fetch()
   },
 
@@ -84,9 +84,6 @@ export default {
   },
 
   methods: {
-    reload() {
-      return this.fetch()
-    },
     fetch() {
       return this.load().then(response => {
         this.siteTitle = response.siteTitle
