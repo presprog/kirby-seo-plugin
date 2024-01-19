@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Kirby\Cms\Section;
+use PresProg\KirbyMeta\PageMeta;
 use PresProg\KirbyMeta\PageMetaOptions;
 
 return [
@@ -23,6 +24,11 @@ return [
         'pageTitle' => function (): string {
             /** @var Section $this */
             return $this->model()->title()->toString();
+        },
+
+        'pageImage' => function (): string {
+            $pageImage = PageMeta::for($this->model())->openGraphImage();
+            return ($pageImage) ? $pageImage->url() : '';
         },
 
         'pageUrl' => function (): string {
