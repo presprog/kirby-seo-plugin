@@ -40,13 +40,7 @@ export default {
     },
 
     title() {
-      let title
-
-      if (this.currentContent.metatitle) {
-        title = this.currentContent.metatitle
-      } else {
-        title = this.pageTitle
-      }
+      let title = (this.currentContent.metatitle) ? this.currentContent.metatitle : this.pageTitle
 
       if (this.metaOptions.appendSiteTitle) {
         title += this.metaOptions.titleSeparator + this.siteTitle
@@ -73,15 +67,8 @@ export default {
   },
 
   created() {
-    this.load().then(response => {
-      this.siteTitle = response.siteTitle
-      this.siteDescription = response.siteDescription
-      this.siteImage = response.siteImage
-      this.pageTitle = response.pageTitle
-      this.pageUrl = new URL(response.pageUrl)
-      this.metaOptions = response.metaOptions
-      this.isLoading = false
-    })
+    this.$events.on("page.changeTitle", this.reload)
+    this.fetch()
   },
 
   data() {
@@ -95,6 +82,23 @@ export default {
       metaOptions:     {},
     }
   },
+
+  methods: {
+    reload() {
+      return this.fetch()
+    },
+    fetch() {
+      return this.load().then(response => {
+        this.siteTitle = response.siteTitle
+        this.siteDescription = response.siteDescription
+        this.siteImage = response.siteImage
+        this.pageTitle = response.pageTitle
+        this.pageUrl = new URL(response.pageUrl)
+        this.metaOptions = response.metaOptions
+        this.isLoading = false
+      })
+    }
+  }
 }
 </script>
 
