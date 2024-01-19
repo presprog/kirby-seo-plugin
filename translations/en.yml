@@ -32,3 +32,5 @@ share-preview-section-title: Share Preview
 share-preview-serp-caption: Search engines list your page with title, a short snippet and url.
 share-preview-social-caption: Social media platforms usually show the share pic.
 share-preview-messaging-caption: Instant messaging apps may display a preview of your link, too.
+
+share-preview-incomplete-warning: Please provide a short description and a share pic.
