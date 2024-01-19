@@ -6,6 +6,10 @@
         <h2 class="k-headline h2">{{ $t('share-preview-section-title') }}</h2>
       </header>
 
+      <k-box theme="warning" icon="alert" v-if="!description || !image">
+        {{ $t('share-preview-incomplete-warning') }}
+      </k-box>
+
       <figure class="preview-wrapper">
         <SerpPreview :title="title" :description="description" :url="this.pageUrl" />
         <figcaption class="k-help k-text"><p>{{ $t('share-preview-serp-caption') }}</p></figcaption>

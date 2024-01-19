@@ -33,3 +33,5 @@ share-preview-section-title: Share Vorschau
 share-preview-serp-caption: Suchmaschinen listen die Seite mit Titel, einer kurzen Beschreibung und dem Link.
 share-preview-social-caption: Soziale Netzwerke zeigen üblicherweise dazu auch das Vorschaubild.
 share-preview-messaging-caption: Kurznachrichten-Apps zeigen wahrscheinlich auch eine kurze Vorschau des geteilten Links.
+
+share-preview-incomplete-warning: Bitte hinterlege eine kurze Beschreibung und ein Share Pic.
