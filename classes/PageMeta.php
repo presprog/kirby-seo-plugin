@@ -19,10 +19,10 @@ readonly class PageMeta
 
     public function fullTitle(): string
     {
-        $fullTitle = $this->title()->html();
+        $fullTitle = $this->title()->value();
 
         if ($this->options->appendSiteTitle) {
-            $fullTitle = $this->title()->html() . $this->options->titleSeparator . site()->title()->html();
+            $fullTitle .= $this->options->titleSeparator . site()->title()->value();
         }
 
         return $fullTitle;
