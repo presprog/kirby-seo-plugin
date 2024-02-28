@@ -9,7 +9,7 @@ use Kirby\Http\Url;
 use Kirby\Toolkit\Xml;
 use PresProg\KirbyMeta\PageMeta;
 
-Kirby::plugin('presprog/meta', [
+Kirby::plugin('presprog/seo', [
 
     'options' => [
         'meta' => [
@@ -70,9 +70,9 @@ Kirby::plugin('presprog/meta', [
             'pattern'  => 'sitemap.xml',
             'language' => '*',
             'action'   => function () {
-                $templatesIncludeList = option('presprog.meta.sitemap.templatesInclude', []);
-                $pagesIncludeList     = option('presprog.meta.sitemap.pagesInclude', []);
-                $pagesExcludeList     = option('presprog.meta.sitemap.pagesExclude', []);
+                $templatesIncludeList = option('presprog.seo.sitemap.templatesInclude', []);
+                $pagesIncludeList     = option('presprog.seo.sitemap.pagesInclude', []);
+                $pagesExcludeList     = option('presprog.seo.sitemap.pagesExclude', []);
 
                 $excludeListPattern = '!^(?:' . implode('|', $pagesExcludeList) . ')$!i';
 
