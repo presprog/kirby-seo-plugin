@@ -1,5 +1,11 @@
 # Upgrade from 0.x.y to 1.0.0
 
+## General
+
+The plugin has been renamed to Kirby SEO Plugin. It will be installed to `site/plugins/seo` now rather than `seo/plugins/meta`. 
+
+Due to that you must adjust your config and rename the parameters, e.g. `presprog.meta` becomes `presprog.seo`.
+
 ## Usage
 
 The method `$page->meta()->head()` does not exist anymore. Use the `seo/head` snippet in your templates to render the markup. 

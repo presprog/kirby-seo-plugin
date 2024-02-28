@@ -16,10 +16,10 @@ readonly class PageMetaOptions
     public static function fromOptions(): self
     {
         return new self(
-            titleSeparator: option('presprog.meta.meta.titleSeparator', ' | '),
-            appendSiteTitle: option('presprog.meta.meta.appendSiteTitle', true),
-            ogImageWidth: option('presprog.meta.meta.ogImageWidth', 1200),
-            ogImageHeight: option('presprog.meta.meta.ogImageHeight', 630),
+            titleSeparator: option('presprog.seo.meta.titleSeparator', ' | '),
+            appendSiteTitle: option('presprog.seo.meta.appendSiteTitle', true),
+            ogImageWidth: option('presprog.seo.meta.ogImageWidth', 1200),
+            ogImageHeight: option('presprog.seo.meta.ogImageHeight', 630),
         );
     }
 
