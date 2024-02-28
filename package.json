@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "npx kirbyup src/index.js --watch",
-    "serve": "npx kirbyup serve src/index.js",
-    "build": "npx kirbyup src/index.js"
+    "dev": "npx kirbyup panel/index.js --watch",
+    "serve": "npx kirbyup serve panel/index.js",
+    "build": "npx kirbyup panel/index.js"
   }
 }
