@@ -1,53 +1,48 @@
-# Metadata Plugin for Kirby 4
+# SEO Plugin for Kirby 4
 
-This plugin started as a copy of the metadata plugin included in the [getkirby.com](https://github.com/getkirby/getkirby.com) GitHub Repository.  We then stripped it down to what we needed and started using it in multiple of our own sites. Hence, kudos to Kirby team for their work and [thanks for sharing](https://github.com/getkirby/getkirby.com/issues/526). 
+This is our opionated take on a SEO plugin for Kirby 4. Edit meta descriptions and open graph data from within the panel – per page with a site-wide default – or programmatically. 
 
-## Setup
+<img src="/social-preview.png?raw=true" width="576" height="843" alt="A screenshot of the panel with three different link previews">
+
+## Install
 
 Install with composer
 
 ```
-composer require presprog/kirby-meta
+composer require presprog/kirby-seo-plugin
 ```
 
-## Configuration
+## Setup
 
-Include the meta tab in your `site.yml`
+Include the SEO **site** tab in your `site.yml` and the SEO **page** tab in all your page blueprints
 
 ```
 # site.yml
 tabs:
-  meta:
-    extends: tabs/meta
-    fields: 
-        metaTitle: false (turn off metatitle as a fallback title does not make sense. Every page has a title in Kirby 3)
-```
+  seo: seo/tabs/site
 
-This includes `metadescription` and `ogimage` fields on your dashboard. These serve as fallback if a page does not have any metadata itself.
-
-Also include the `companyInfo.yml` section. From this information we compile a JSON-LD rich data snippet.
-
-Add the meta tab to your page blueprint(s) as well. 
-
-```
-# default.yml|product.yml|home.yml|...
+# e.g. default.yml
 tabs:
-  meta: tabs/meta
+  seo: seo/tabs/page
 ```
 
-Whenever you define metadata like `metatitle`, `metadescription` or `ogimage` on your page, these will be used. When you do not define these, the fallbacks from `site.yml` will be used.
+The site tab includes `metadescription` and `ogimage` fields on your dashboard. These serve as fallback if a page does not have any metadata itself.
+
+The page tab includes fields for meta title, description and Open Graph Image (share pic). You have three generic previews to see how your page being shared on different platforms may look. When you do not define these, the plugin fallsback to the page title and the fallbacks for decsription and Open Graph Image from `site.yml`.
 
 ## Use in template
 
 ```php
-<?php 
-// some template
-echo $page->meta()->title(); // Applies the above described logic
-echo $page->meta()->head(); // Outputs meta description with above described logic and open graph tags
+// in <head> of a page template
+<?php snippet('seo/head') ?>
 ```
 
-## That's all?
+----
 
-This plugin also includes
-- sitemap.xml
-- robots.txt
+*The original version of this plugin started as a copy of the metadata plugin included in [getkirby.com](https://github.com/getkirby/getkirby.com) website Repository.  We stripped it down to what we needed and started using it in multiple of our own sites. Thanks to the Kirby team for [sharing their work](https://github.com/getkirby/getkirby.com/issues/526).*
+
+----
+
+Made with ♥️ and ☕ by [Present Progressive](https://www.presentprogressive.de)
+
+<img src="/logo.svg?raw=true" width="200" height="43">
