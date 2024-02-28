@@ -11,19 +11,23 @@ use PresProg\KirbyMeta\PageMeta;
 
 Kirby::plugin('presprog/meta', [
 
+    'options' => [
+        'meta' => [
+            'appendSiteTitle' => true,
+            'titleSeparator'  => ' | ',
+        ],
+        'sitemap' => [
+            'templatesInclude' => [],
+            'pagesInclude'     => [],
+            'pagesExclude'     => [],
+        ],
+    ],
+
     'blueprints' => [
         'seo/tabs/site'           => __DIR__ . '/blueprints/tabs/site.yml',
         'seo/tabs/page'           => __DIR__ . '/blueprints/tabs/page.yml',
         'seo/fields/robotsGroup'  => __DIR__ . '/blueprints/fields/robotsGroup.yml',
         'seo/fields/robotsToggle' => __DIR__ . '/blueprints/fields/robotsToggle.yml',
-    ],
-
-    'options' => [
-        'meta.appendSiteTitle'     => true,
-        'meta.titleSeparator'      => ' | ',
-        'sitemap.templatesInclude' => [],
-        'sitemap.pagesInclude'     => [],
-        'sitemap.pagesExclude'     => [],
     ],
 
     'pageMethods' => [
