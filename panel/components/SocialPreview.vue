@@ -1,6 +1,8 @@
 <template>
   <div class="social-preview">
-    <img v-if="this.image" :src="this.image">
+    <k-frame v-if="this.image" :ratio="ratio" cover="true">
+      <img :src="this.image">
+    </k-frame>
     <div class="inner">
       <strong>{{ title }}</strong>
       <p v-if="description">{{ description }}</p>
@@ -14,6 +16,7 @@ export default {
     title: String,
     description: String,
     image: String,
+    ratio: String,
   },
 }
 </script>

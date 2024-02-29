@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use Kirby\Cms\File;
 use Kirby\Cms\Section;
 use PresProg\KirbyMeta\PageMeta;
 use PresProg\KirbyMeta\PageMetaOptions;
@@ -18,7 +19,10 @@ return [
         },
 
         'siteImage' => function (): string {
-            return $this->model()->site()->ogImage()->toFile()?->url() ?? '';
+            $options = PageMetaOptions::fromOptions();
+            $ogImage = PageMeta::for($this->model())->siteImage();
+
+            return $ogImage ? $ogImage->crop($options->ogImageWidth, $options->ogImageHeight)->url() : '';
         },
 
         'pageTitle' => function (): string {
@@ -26,14 +30,25 @@ return [
             return $this->model()->title()->toString();
         },
 
-        'pageImage' => function (): string {
-            $pageImage = PageMeta::for($this->model())->openGraphImage();
-            return ($pageImage) ? $pageImage->url() : '';
-        },
-
         'pageUrl' => function (): string {
             /** @var Section $this */
             return $this->model()->url();
+        },
+
+        'pageImage' => function (): string {
+            /** @var Section $this */
+            $options = PageMetaOptions::fromOptions();
+            $pageImage = PageMeta::for($this->model())->pageImage();
+
+            return $pageImage ? $pageImage->crop($options->ogImageWidth, $options->ogImageHeight)->url() : '';
+        },
+
+        'pageModelImage' => function (): null {
+            /** @var Section $this */
+            $options = PageMetaOptions::fromOptions();
+            $pageModelImage = PageMeta::for($this->model())->pageModelImage();
+
+            return $pageModelImage ? $pageModelImage->crop($options->ogImageWidth, $options->ogImageHeight)->url() : null;
         },
 
         'metaOptions' => function (): PageMetaOptions {

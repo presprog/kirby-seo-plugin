@@ -16,7 +16,7 @@
       </figure>
 
       <figure class="preview-wrapper">
-        <SocialPreview :title="title" :description="description" :image="this.image" />
+        <SocialPreview :title="title" :description="description" :image="this.image" :ratio="imageRatio" />
         <figcaption class="k-help k-text"><p>{{ $t('share-preview-social-caption') }}</p></figcaption>
       </figure>
 
@@ -43,6 +43,10 @@ export default {
       return this.$store.getters['content/values']()
     },
 
+    changes() {
+      return this.$store.getters["content/changes"]();
+    },
+
     title() {
       let title = (this.currentContent.metatitle) ? this.currentContent.metatitle : this.pageTitle
 
@@ -62,20 +66,36 @@ export default {
     },
 
     image() {
+      // Changes have been made to the open graph image
+      if ('ogimage' in this.changes) {
+        // New image has been set
+        if (this.changes.ogimage.length > 0) {
+          return this.changes.ogimage[0].url
+        }
+
+        // Existing image has been removed
+        return this.fallbackImage
+      }
+
       if (this.currentContent.ogimage.length > 0) {
         return this.currentContent.ogimage[0].url
       }
 
-      if (this.pageImage) {
-        return this.pageImage
+      return this.fallbackImage ?? ''
+    },
+
+    fallbackImage() {
+      if (this.pageModelImage) {
+        return this.pageModelImage
       }
 
-      return this.siteImage ? this.siteImage : ''
+      return this.siteImage ? this.siteImage : null
     },
   },
 
   created() {
     this.$events.on("page.changeTitle", this.fetch)
+    this.$events.on("model.update", this.fetch)
     this.fetch()
   },
 
@@ -87,7 +107,9 @@ export default {
       siteImage:       '',
       pageTitle:       '',
       pageImage:       '',
+      pageModelImage:  '',
       pageUrl:         '',
+      imageRatio:      '',
       metaOptions:     {},
     }
   },
@@ -100,8 +122,10 @@ export default {
         this.siteImage = response.siteImage
         this.pageTitle = response.pageTitle
         this.pageImage = response.pageImage
+        this.pageModelImage = response.pageModelImage
         this.pageUrl = new URL(response.pageUrl)
         this.metaOptions = response.metaOptions
+        this.imageRatio = `${this.metaOptions.ogImageWidth}/${this.metaOptions.ogImageHeight}`
         this.isLoading = false
       })
     }

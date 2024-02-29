@@ -68,6 +68,29 @@ readonly class PageMeta
         return $metaDescription;
     }
 
+    public function siteImage(): ?File
+    {
+        return $this->page->site()->ogImage()->toFile();
+    }
+
+    public function pageImage(): ?File
+    {
+        if ($this->page->ogImage()->isNotEmpty()) {
+            return $this->page->ogImage()->first()->toFile();
+        }
+
+        return null;
+    }
+
+    public function pageModelImage(): ?File
+    {
+        if (method_exists($this->page, 'getOpenGraphImage')) {
+            return $this->page->getOpenGraphImage();
+        }
+
+        return null;
+    }
+
     public function openGraphImage(): ?File
     {
         $image = null;
