@@ -95,12 +95,12 @@ readonly class PageMeta
     {
         $image = null;
 
-        if (method_exists($this->page, 'getOpenGraphImage')) {
-            $image = $this->page->getOpenGraphImage();
+        if ($this->page->ogImage()->isNotEmpty()) {
+            return $this->page->ogImage()->first()->toFile();
         }
 
-        if (is_null($image) && $this->page->ogImage()->isNotEmpty()) {
-            return $this->page->ogImage()->first()->toFile();
+        if (method_exists($this->page, 'getOpenGraphImage')) {
+            $image = $this->page->getOpenGraphImage();
         }
 
         $site = $this->page->site();

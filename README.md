@@ -37,6 +37,14 @@ The page tab includes fields for meta title, description and Open Graph Image (s
 <?php snippet('seo/head') ?>
 ```
 
+## Hierarchy
+
+This plugin will look for an Open Graph image in the following order:
+
+1. Page image (The image defined in the page blueprint)
+2. Page model image (The image defined programmatically in a page model)
+3. Site image (The site-wide fallback)
+
 ----
 
 *The original version of this plugin started as a copy of the metadata plugin included in [getkirby.com](https://github.com/getkirby/getkirby.com) website Repository.  We stripped it down to what we needed and started using it in multiple of our own sites. Thanks to the Kirby team for [sharing their work](https://github.com/getkirby/getkirby.com/issues/526).*
