@@ -43,7 +43,7 @@ return [
             return $pageImage ? $pageImage->crop($options->ogImageWidth, $options->ogImageHeight)->url() : '';
         },
 
-        'pageModelImage' => function (): null {
+        'pageModelImage' => function (): ?string {
             /** @var Section $this */
             $options = PageMetaOptions::fromOptions();
             $pageModelImage = PageMeta::for($this->model())->pageModelImage();
