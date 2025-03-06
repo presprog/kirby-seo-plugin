@@ -190,7 +190,7 @@ readonly class PageMeta
         return (float)min(1, max(0, $priority));
     }
 
-    public static function for(Page $page, PageMetaOptions $options = null): self
+    public static function for(Page $page, PageMetaOptions|null $options = null): self
     {
         if (!$options) {
             $options = PageMetaOptions::fromOptions();
