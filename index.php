@@ -74,6 +74,9 @@ Kirby::plugin('presprog/seo', [
                 $pagesIncludeList     = option('presprog.seo.sitemap.pagesInclude', []);
                 $pagesExcludeList     = option('presprog.seo.sitemap.pagesExclude', []);
 
+                $errorPage = kirby()->site()->errorPageId();
+                $pagesExcludeList = array_values([... $pagesExcludeList, $errorPage]);
+
                 $excludeListPattern = '!^(?:' . implode('|', $pagesExcludeList) . ')$!i';
 
                 $cache   = kirby()->cache('pages');
