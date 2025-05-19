@@ -55,7 +55,7 @@ Kirby::plugin('presprog/seo', [
                 if (kirby()->multilang()) {
                     /** @var Language $language */
                     foreach (kirby()->languages() as $language) {
-                        $robots .= Url::makeAbsolute('/sitemap.xml', $language->url()) . PHP_EOL;
+                        $robots .= 'Sitemap: ' . Url::makeAbsolute('/sitemap.xml', $language->url()) . PHP_EOL;
                     }
                 } else {
                     $robots .= 'Sitemap: ' . url('sitemap.xml');
