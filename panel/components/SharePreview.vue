@@ -40,11 +40,11 @@ export default {
 
   computed: {
     currentContent() {
-      return this.$store.getters['content/values']()
+      return this.$store?.getters['content/values']() ?? this.$panel.content.version('changes')
     },
 
     changes() {
-      return this.$store.getters["content/changes"]();
+      return this.$store?.getters["content/changes"]() ?? this.$panel.content.diff()
     },
 
     title() {
