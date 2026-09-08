@@ -1,6 +1,6 @@
 {
   "name": "presprog/kirby-seo-plugin",
-  "description": "Opinionated SEO plugin for Kirby 4. With meta description, open graph, sitemap and robots.txt",
+  "description": "Opinionated SEO plugin for Kirby CMS. With meta description, open graph, sitemap and robots.txt",
   "type": "kirby-plugin",
   "license": "MIT",
   "require": {
