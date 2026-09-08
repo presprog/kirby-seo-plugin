@@ -14,7 +14,7 @@ readonly class PageMeta
 
     public function siteTitle(): string
     {
-        return $this->page->site()->title()->value();
+        return $this->apply('siteTitle', $this->page->site()->title()->value());
     }
 
     public function fullTitle(): string
@@ -25,7 +25,7 @@ readonly class PageMeta
             $fullTitle .= $this->options->titleSeparator . site()->title()->value();
         }
 
-        return $fullTitle;
+        return $this->apply('fullTitle', $fullTitle);
     }
 
     /**
@@ -40,7 +40,7 @@ readonly class PageMeta
             $metaTitle = $this->page->title();
         }
 
-        return $metaTitle;
+        return $this->apply('title', $metaTitle);
     }
 
     /**
@@ -62,64 +62,68 @@ readonly class PageMeta
         }
 
         if ($metaDescription->isEmpty()) {
-            return new Field($this->page, 'fallbackDescription', '');
+            $metaDescription = new Field($this->page, 'fallbackDescription', '');
         }
 
-        return $metaDescription;
+        return $this->apply('description', $metaDescription);
     }
 
     public function siteImage(): ?File
     {
-        return $this->page->site()->ogImage()->toFile();
+        $image = null;
+
+        if ($this->page->site()->ogImage()->isNotEmpty()) {
+            $image = $this->page->site()->ogImage()->first()->toFile();
+        }
+
+        return $this->apply('siteImage', $image);
     }
 
     public function pageImage(): ?File
     {
+        $image = null;
+
         if ($this->page->ogImage()->isNotEmpty()) {
-            return $this->page->ogImage()->first()->toFile();
+            $image = $this->page->ogImage()->first()->toFile();
         }
 
-        return null;
+        return $this->apply('pageImage', $image);
     }
 
     public function pageModelImage(): ?File
     {
-        if (method_exists($this->page, 'getOpenGraphImage')) {
-            return $this->page->getOpenGraphImage();
-        }
-
-        return null;
-    }
-
-    public function openGraphImage(): ?File
-    {
         $image = null;
-
-        if ($this->page->ogImage()->isNotEmpty()) {
-            return $this->page->ogImage()->first()->toFile();
-        }
 
         if (method_exists($this->page, 'getOpenGraphImage')) {
             $image = $this->page->getOpenGraphImage();
         }
 
-        $site = $this->page->site();
+        return $this->apply('pageModelImage', $image);
+    }
 
-        if (is_null($image) && $site->ogImage()->isNotEmpty()) {
-            return $site->ogImage()->first()->toFile();
+    public function openGraphImage(): ?File
+    {
+        if ($image = $this->pageImage()) {
+            return $this->apply('openGraphImage', $image);
         }
 
-        return ($image) ?: null;
+        $image = $this->pageModelImage();
+
+        if (is_null($image)) {
+            $image = $this->siteImage();
+        }
+
+        return $this->apply('openGraphImage', $image);
     }
 
     public function ogType(): string
     {
-        return 'website';
+        return $this->apply('ogType', 'website');
     }
 
     public function ogUrl(): string
     {
-        return $this->page->url();
+        return $this->apply('ogUrl', $this->page->url());
     }
 
     /**
@@ -142,12 +146,12 @@ readonly class PageMeta
         $props['height'] = $cropped->height();
         $props['alt'] = $image->alt()->isNotEmpty() ? $image->alt()->value() : '';
 
-        return $props;
+        return $this->apply('ogImage', $props);
     }
 
     public function canonicalUrl(): string
     {
-        return $this->page->url();
+        return $this->apply('canonicalUrl', $this->page->url());
     }
 
     public function robots(): string
@@ -159,7 +163,7 @@ readonly class PageMeta
             $this->page->robotsImages()->toBool() ? 'imageindex' : 'noimageindex',
         ];
 
-        return implode(', ', $robots);
+        return $this->apply('robots', implode(', ', $robots));
     }
 
     public function getFile(string $key, bool $fallback = true): ?File
@@ -187,7 +191,7 @@ readonly class PageMeta
             $priority = 0.5;
         }
 
-        return (float)min(1, max(0, $priority));
+        return $this->apply('priority', (float)min(1, max(0, $priority)));
     }
 
     public static function for(Page $page, PageMetaOptions|null $options = null): self
@@ -197,5 +201,14 @@ readonly class PageMeta
         }
 
         return new PageMeta($page, $options);
+    }
+
+    private function apply(string $key, mixed $value): mixed
+    {
+        return kirby()->apply("presprog.seo.{$key}", [
+            $key   => $value,
+            'page' => $this->page,
+            'meta' => $this,
+        ], $key);
     }
 }
