@@ -51,6 +51,6 @@ This plugin will look for an Open Graph image in the following order:
 
 ----
 
-Made with ♥️ and ☕ by [Present Progressive](https://www.presentprogressive.de)
+Made with ♥️ and ☕ by [Present Progressive](https://www.presentprogressive.de?utm_medium=referral&utm_source=github&utm_campaign=backlink&utm_content=readme)
 
 <img src="/logo.svg?raw=true" width="200" height="43">
