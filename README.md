@@ -1,12 +1,12 @@
-# SEO Plugin for Kirby 4
+# SEO Plugin for Kirby CMS
 
-This is our opionated take on a SEO plugin for Kirby 4. Edit meta descriptions and open graph data from within the panel – per page with a site-wide default – or programmatically. 
+This is our opinionated take on an SEO plugin for Kirby CMS. Edit meta descriptions and Open Graph data from within the panel – per page with a site-wide default – or programmatically.
 
 <img src="/social-preview.png?raw=true" width="576" height="843" alt="A screenshot of the panel with three different link previews">
 
 ## Install
 
-Install with composer
+Install with Composer
 
 ```
 composer require presprog/kirby-seo-plugin
@@ -28,7 +28,7 @@ tabs:
 
 The site tab includes `metadescription` and `ogimage` fields on your dashboard. These serve as fallback if a page does not have any metadata itself.
 
-The page tab includes fields for meta title, description and Open Graph Image (share pic). You have three generic previews to see how your page being shared on different platforms may look. When you do not define these, the plugin fallsback to the page title and the fallbacks for decsription and Open Graph Image from `site.yml`.
+The page tab includes fields for meta title, description and Open Graph image (share pic). You have three generic previews to see how your page being shared on different platforms may look. When you do not define these, the plugin falls back to the page title and the fallbacks for description and Open Graph image from `site.yml`.
 
 ## Use in template
 
@@ -47,7 +47,7 @@ This plugin will look for an Open Graph image in the following order:
 
 ----
 
-*The original version of this plugin started as a copy of the metadata plugin included in [getkirby.com](https://github.com/getkirby/getkirby.com) website Repository.  We stripped it down to what we needed and started using it in multiple of our own sites. Thanks to the Kirby team for [sharing their work](https://github.com/getkirby/getkirby.com/issues/526).*
+*The original version of this plugin started as a copy of the metadata plugin included in the [getkirby.com](https://github.com/getkirby/getkirby.com) website repository. We stripped it down to what we needed and started using it in multiple of our own sites. Thanks to the Kirby team for [sharing their work](https://github.com/getkirby/getkirby.com/issues/526).*
 
 ----
 
