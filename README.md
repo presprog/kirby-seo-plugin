@@ -6,6 +6,8 @@ This is our opinionated take on an SEO plugin for Kirby CMS. Edit meta descripti
 
 ## Install
 
+This release requires Kirby 6 and PHP 8.3–8.6. For Kirby 4 or 5, use the plugin's 1.x release line.
+
 Install with Composer
 
 ```

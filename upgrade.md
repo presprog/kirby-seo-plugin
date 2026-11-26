@@ -1,5 +1,8 @@
 # Upgrade to the Kirby 6 release
 
+This release requires Kirby 6 and PHP 8.3–8.6. Support for Kirby 4 and 5 has been
+dropped; sites on those versions should stay on the plugin's 1.x release line.
+
 The SEO tabs now define their settings directly under `columns.settings.fields`.
 If you override fields in these tabs, update the old path
 `columns.settings.sections.seoFields.fields` accordingly. Field names and stored
