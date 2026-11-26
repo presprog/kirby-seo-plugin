@@ -99,6 +99,11 @@ export default {
     this.fetch()
   },
 
+  beforeDestroy() {
+    this.$events.off("page.changeTitle", this.fetch)
+    this.$events.off("model.update", this.fetch)
+  },
+
   data() {
     return {
       isLoading:       true,
