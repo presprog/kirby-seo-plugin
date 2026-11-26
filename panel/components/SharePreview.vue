@@ -56,8 +56,8 @@ export default {
       return this.$panel.content.version('changes')
     },
 
-    changes() {
-      return this.$panel.content.diff()
+    selectedImageId() {
+      return this.currentContent.ogimage?.[0] ?? ''
     },
 
     title() {
@@ -79,22 +79,7 @@ export default {
     },
 
     image() {
-      // Changes have been made to the open graph image
-      if ('ogimage' in this.changes) {
-        // New image has been set
-        if (this.changes.ogimage.length > 0) {
-          return this.changes.ogimage[0].url
-        }
-
-        // Existing image has been removed
-        return this.fallbackImage
-      }
-
-      if (this.currentContent.ogimage.length > 0) {
-        return this.currentContent.ogimage[0].url
-      }
-
-      return this.fallbackImage ?? ''
+      return this.selectedImageUrl || this.fallbackImage || ''
     },
 
     fallbackImage() {
@@ -106,6 +91,13 @@ export default {
     },
   },
 
+  watch: {
+    selectedImageId: {
+      handler: 'fetchImage',
+      immediate: true,
+    },
+  },
+
   created() {
     this.$panel.events.on("page.changeTitle", this.fetch)
     this.$panel.events.on("model.update", this.fetch)
@@ -113,6 +105,7 @@ export default {
   },
 
   beforeUnmount() {
+    this.imageRequest++
     this.$panel.events.off("page.changeTitle", this.fetch)
     this.$panel.events.off("model.update", this.fetch)
   },
@@ -124,7 +117,8 @@ export default {
       siteDescription: '',
       siteImage:       '',
       pageTitle:       '',
-      pageImage:       '',
+      selectedImageUrl: '',
+      imageRequest:    0,
       pageModelImage:  '',
       pageUrl:         '',
       imageRatio:      '',
@@ -133,13 +127,34 @@ export default {
   },
 
   methods: {
+    async fetchImage() {
+      const id = this.selectedImageId
+      const request = ++this.imageRequest
+      this.selectedImageUrl = ''
+
+      if (!id) {
+        return
+      }
+
+      try {
+        const response = await this.$api.get(`${this.endpoints.field}/image`, { id })
+
+        if (request === this.imageRequest) {
+          this.selectedImageUrl = response.url
+        }
+      } catch (error) {
+        if (request === this.imageRequest) {
+          this.$panel.notification.error(error)
+        }
+      }
+    },
+
     fetch() {
       return this.$api.get(this.endpoints.field).then(response => {
         this.siteTitle = response.siteTitle
         this.siteDescription = response.siteDescription
         this.siteImage = response.siteImage
         this.pageTitle = response.pageTitle
-        this.pageImage = response.pageImage
         this.pageModelImage = response.pageModelImage
         this.pageUrl = new URL(response.pageUrl)
         this.metaOptions = response.metaOptions

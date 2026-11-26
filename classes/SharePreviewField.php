@@ -17,6 +17,13 @@ class SharePreviewField extends DisplayField
                 'method'  => 'GET',
                 'action'  => fn () => $field->preview(),
             ],
+            [
+                'pattern' => 'image',
+                'method'  => 'GET',
+                'action'  => fn () => [
+                    'url' => $field->selectedImageUrl($field->kirby()->request()->get('id')),
+                ],
+            ],
         ];
     }
 
@@ -32,10 +39,24 @@ class SharePreviewField extends DisplayField
             'siteImage'       => $this->imageUrl($meta->siteImage(), $options),
             'pageTitle'       => $page->title()->toString(),
             'pageUrl'         => $page->url(),
-            'pageImage'       => $this->imageUrl($meta->pageImage(), $options),
             'pageModelImage'  => $this->imageUrl($meta->pageModelImage(), $options),
             'metaOptions'     => get_object_vars($options),
         ];
+    }
+
+    public function selectedImageUrl(mixed $id): string
+    {
+        if (is_string($id) === false || $id === '') {
+            return '';
+        }
+
+        $image = $this->kirby()->file($id, $this->model());
+
+        if ($image === null || $image->isListable() === false) {
+            return '';
+        }
+
+        return $this->imageUrl($image, PageMetaOptions::fromOptions());
     }
 
     private function imageUrl(?File $image, PageMetaOptions $options): string
