@@ -28,7 +28,7 @@ seo-tab-og-image-fallback: Share Pic (Fallback)
 seo-tab-og-image-fallback-help: This is mostly displayed by social media platforms when posting a link. Will be used if a page does not have a custom share pic.
 
 ### Share Preview
-share-preview-section-title: Share Preview
+share-preview-field-title: Share Preview
 share-preview-serp-caption: Search engines list your page with title, a short snippet and url.
 share-preview-social-caption: Social media platforms usually show the share pic.
 share-preview-messaging-caption: Instant messaging apps may display a preview of your link, too.

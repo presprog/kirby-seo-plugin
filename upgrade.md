@@ -1,3 +1,16 @@
+# Upgrade to the Kirby 6 release
+
+The share preview is now a display field. If you use `seo/tabs/page`, its blueprint
+already includes this change. If you placed the preview in a custom blueprint,
+move it from `sections` to `fields`:
+
+```yaml
+fields:
+  sharePreview:
+    type: sharepreview
+    label: share-preview-field-title
+```
+
 # Upgrade from 0.x.y to 1.0.0
 
 ## General

@@ -8,6 +8,7 @@ use Kirby\Http\Response;
 use Kirby\Http\Url;
 use Kirby\Toolkit\Xml;
 use PresProg\KirbyMeta\PageMeta;
+use PresProg\KirbyMeta\SharePreviewField;
 
 Kirby::plugin('presprog/seo', [
 
@@ -40,8 +41,8 @@ Kirby::plugin('presprog/seo', [
         'seo/head' => __DIR__ . '/snippets/seo/head.php',
     ],
 
-    'sections' => [
-        'sharePreview' => __DIR__ .'/sections/sharePreview.php',
+    'fields' => [
+        'sharepreview' => SharePreviewField::class,
     ],
 
     'routes' => [

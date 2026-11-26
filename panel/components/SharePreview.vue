@@ -1,10 +1,14 @@
 <template>
-  <k-section v-if="!isLoading" class="k-share-preview-section">
+  <k-field
+    :help="help"
+    :input="false"
+    :label="label"
+    :name="name"
+    :type="type"
+    class="k-share-preview-field"
+  >
 
-    <div class="k-grid" data-variant="fields">
-      <header class="k-section-header">
-        <h2 class="k-headline h2">{{ $t('share-preview-section-title') }}</h2>
-      </header>
+    <div v-if="!isLoading" class="previews">
 
       <k-box theme="warning" icon="alert" v-if="!description || !image">
         {{ $t('share-preview-incomplete-warning') }}
@@ -26,7 +30,7 @@
       </figure>
 
     </div>
-  </k-section>
+  </k-field>
 
 </template>
 
@@ -36,15 +40,24 @@ import SocialPreview from './SocialPreview.vue'
 import MessagingPreview from './MessagingPreview.vue'
 
 export default {
+  inheritAttrs: false,
   components: { MessagingPreview, SerpPreview, SocialPreview },
+
+  props: {
+    help: String,
+    label: String,
+    name: String,
+    type: String,
+    endpoints: Object,
+  },
 
   computed: {
     currentContent() {
-      return this.$store?.getters['content/values']() ?? this.$panel.content.version('changes')
+      return this.$panel.content.version('changes')
     },
 
     changes() {
-      return this.$store?.getters["content/changes"]() ?? this.$panel.content.diff()
+      return this.$panel.content.diff()
     },
 
     title() {
@@ -94,9 +107,14 @@ export default {
   },
 
   created() {
-    this.$events.on("page.changeTitle", this.fetch)
-    this.$events.on("model.update", this.fetch)
+    this.$panel.events.on("page.changeTitle", this.fetch)
+    this.$panel.events.on("model.update", this.fetch)
     this.fetch()
+  },
+
+  beforeUnmount() {
+    this.$panel.events.off("page.changeTitle", this.fetch)
+    this.$panel.events.off("model.update", this.fetch)
   },
 
   data() {
@@ -116,7 +134,7 @@ export default {
 
   methods: {
     fetch() {
-      return this.load().then(response => {
+      return this.$api.get(this.endpoints.field).then(response => {
         this.siteTitle = response.siteTitle
         this.siteDescription = response.siteDescription
         this.siteImage = response.siteImage
@@ -134,11 +152,9 @@ export default {
 </script>
 
 <style scoped>
-.k-headline {
-  font-weight: var(--font-normal);
-}
-.k-grid {
-  --columns: 1;
+.previews {
+  display: grid;
+  gap: var(--spacing-6);
 }
 .preview-wrapper {
   --min-preview-height: 5rem;

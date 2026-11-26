@@ -33,6 +33,7 @@ columns:
 
   preview:
     width: 1/3
-    sections:
+    fields:
       sharePreview:
-        type: sharePreview
+        type: sharepreview
+        label: share-preview-field-title
