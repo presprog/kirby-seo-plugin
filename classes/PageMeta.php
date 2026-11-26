@@ -73,7 +73,7 @@ readonly class PageMeta
         $image = null;
 
         if ($this->page->site()->ogImage()->isNotEmpty()) {
-            $image = $this->page->site()->ogImage()->first()->toFile();
+            $image = $this->page->site()->ogImage()->toFile();
         }
 
         return $this->apply('siteImage', $image);
@@ -84,7 +84,7 @@ readonly class PageMeta
         $image = null;
 
         if ($this->page->ogImage()->isNotEmpty()) {
-            $image = $this->page->ogImage()->first()->toFile();
+            $image = $this->page->ogImage()->toFile();
         }
 
         return $this->apply('pageImage', $image);
