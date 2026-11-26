@@ -86,6 +86,18 @@ use PresProg\KirbyMeta\PageMeta;
 ]
 ```
 
+## Development
+
+Use Node.js 24 or newer and pnpm (the version is pinned in `package.json`).
+Run these commands from the plugin directory:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Run `pnpm build` to regenerate the committed Panel assets before committing changes.
+
 ----
 
 *The original version of this plugin started as a copy of the metadata plugin included in the [getkirby.com](https://github.com/getkirby/getkirby.com) website repository. We stripped it down to what we needed and started using it in multiple of our own sites. Thanks to the Kirby team for [sharing their work](https://github.com/getkirby/getkirby.com/issues/526).*
