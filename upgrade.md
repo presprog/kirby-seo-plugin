@@ -1,5 +1,10 @@
 # Upgrade to the Kirby 6 release
 
+The SEO tabs now define their settings directly under `columns.settings.fields`.
+If you override fields in these tabs, update the old path
+`columns.settings.sections.seoFields.fields` accordingly. Field names and stored
+content stay the same. The Open Graph image field now uses `type: filepicker`.
+
 The share preview is now a display field. If you use `seo/tabs/page`, its blueprint
 already includes this change. If you placed the preview in a custom blueprint,
 move it from `sections` to `fields`:

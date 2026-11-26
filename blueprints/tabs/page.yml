@@ -1,35 +1,31 @@
-type: section
 icon: search
 label: seo-tab-label
 
 columns:
   settings:
     width: 2/3
-    sections:
-      seoFields:
-        type: fields
-        fields:
-          metaHeadline:
-            label: seo-tab-meta-headline
-            type: headline
-            numbered: false
-          metaTitle:
-            label: seo-tab-meta-title
-            type: text
-            width: 1/2
-            help: seo-tab-meta-title-help
-          metaDescription:
-            label: seo-tab-meta-description
-            type: textarea
-            buttons: false
-            help: seo-tab-meta-description-help
-          ogImage:
-            label: seo-tab-og-image
-            type: files
-            files: images
-            multiple: false
-            help: seo-tab-og-image-help
-          robots: seo/fields/robotsGroup
+    fields:
+      metaHeadline:
+        label: seo-tab-meta-headline
+        type: headline
+        numbered: false
+      metaTitle:
+        label: seo-tab-meta-title
+        type: text
+        width: 1/2
+        help: seo-tab-meta-title-help
+      metaDescription:
+        label: seo-tab-meta-description
+        type: textarea
+        buttons: false
+        help: seo-tab-meta-description-help
+      ogImage:
+        label: seo-tab-og-image
+        type: filepicker
+        files: images
+        multiple: false
+        help: seo-tab-og-image-help
+      robots: seo/fields/robotsGroup
 
   preview:
     width: 1/3
